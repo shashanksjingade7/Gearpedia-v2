@@ -15001,6 +15001,17 @@ function submitFeedback(){
     existing.push(entry);
     localStorage.setItem('gp-feedback', JSON.stringify(existing));
   } catch(e){}
+  // Save to Firestore
+  if (window._saveToFirestore) {
+    window._saveToFirestore(entry).then(function(fid) {
+      if (!fid) return;
+      try {
+        var fb = JSON.parse(localStorage.getItem('gp-feedback') || '[]');
+        var last = fb[fb.length-1];
+        if (last && !last._fid) { last._fid = fid; localStorage.setItem('gp-feedback', JSON.stringify(fb)); }
+      } catch(e){}
+    });
+  }
   try {
     if(window._gpDb){
       var { collection, addDoc, serverTimestamp } = window._gpFirestore;
@@ -16018,6 +16029,10 @@ function togglePublishFeedback(idx) {
   if (!entries[idx]) return;
   entries[idx].published = !entries[idx].published;
   try { localStorage.setItem('gp-feedback', JSON.stringify(entries)); } catch(e){}
+  // Sync publish status to Firestore
+  if (entries[idx]._fid && window._publishInFirestore) {
+    window._publishInFirestore(entries[idx]._fid, entries[idx].published);
+  }
   renderFeedbackDash();
   // Re-render published testimonials on home page
   renderPublishedTestimonials();
@@ -21471,15 +21486,76 @@ function _drawMeshVisSVG(svgId, z1, z2, m, pa) {
     messagingSenderId: "687563806783",
     appId: "1:687563806783:web:f0261e09d60553aa80008a"
   };
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+  import { getFirestore, collection, addDoc, getDocs, doc, updateDoc, serverTimestamp, query, where } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+  const firebaseConfig = {
+    apiKey: "AIzaSyAh36JU3zD0FdFzvNf-qVTyw8-praSn3Wc",
+    authDomain: "gearpedia-v2.firebaseapp.com",
+    projectId: "gearpedia-v2",
+    storageBucket: "gearpedia-v2.firebasestorage.app",
+    messagingSenderId: "687563806783",
+    appId: "1:687563806783:web:f0261e09d60553aa80008a"
+  };
   const app = initializeApp(firebaseConfig);
   const db = getFirestore(app);
   window._gpDb = db;
   window._gpFirestore = { collection, addDoc, serverTimestamp };
+
+  // Save new feedback entry to Firestore, return doc ID
+  window._saveToFirestore = async function(entry) {
+    try {
+      const ref = await addDoc(collection(db, "feedback"), { ...entry, published: false, serverTs: serverTimestamp() });
+      return ref.id;
+    } catch(e) { console.warn("Firestore save:", e); return null; }
+  };
+
+  // Publish or unpublish a doc in Firestore
+  window._publishInFirestore = async function(fid, published) {
+    try { await updateDoc(doc(db, "feedback", fid), { published }); }
+    catch(e) { console.warn("Firestore publish:", e); }
+  };
+
+  // Load ALL feedback from Firestore into localStorage (admin use)
+  window._loadFromFirestore = async function() {
+    try {
+      const snap = await getDocs(collection(db, "feedback"));
+      const entries = [];
+      snap.forEach(d => entries.push({ _fid: d.id, ...d.data() }));
+      localStorage.setItem('gp-feedback', JSON.stringify(entries));
+      if (typeof renderFeedbackDash === 'function') renderFeedbackDash();
+      if (typeof renderPublishedTestimonials === 'function') renderPublishedTestimonials();
+    } catch(e) { console.warn("Firestore load:", e); }
+  };
+
+  // Load PUBLISHED testimonials for public visitors
+  window._loadPublishedTestimonials = async function() {
+    try {
+      const snap = await getDocs(query(collection(db, "feedback"), where("published", "==", true)));
+      const entries = [];
+      snap.forEach(d => entries.push({ _fid: d.id, ...d.data() }));
+      const local = JSON.parse(localStorage.getItem('gp-feedback') || '[]');
+      const firestoreFids = entries.map(e => e._fid);
+      // Mark published status based on Firestore
+      local.forEach(e => { if (e._fid) e.published = firestoreFids.includes(e._fid); });
+      // Add any Firestore entries not in local
+      entries.forEach(e => { if (!local.find(l => l._fid === e._fid)) local.push(e); });
+      localStorage.setItem('gp-feedback', JSON.stringify(local));
+      if (typeof renderPublishedTestimonials === 'function') renderPublishedTestimonials();
+    } catch(e) { console.warn(e); }
+  };
+
+  // Subscribe
   window.submitSubscription = async function(email) {
     if (!email) return alert("Please enter your email.");
-    await addDoc(collection(db, "subscribers"), { email, timestamp: serverTimestamp() });
-    alert("Subscribed! Thank you.");
+    try {
+      await addDoc(collection(db, "subscribers"), { email, timestamp: serverTimestamp() });
+      alert("Subscribed! Thank you.");
+    } catch(e) { alert("Error: " + e.message); }
   };
+
+  // Auto-load published testimonials for all visitors on page load
+  window.addEventListener('load', () => window._loadPublishedTestimonials());
 </script>
 </body>
 </html>
