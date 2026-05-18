@@ -11241,8 +11241,8 @@ Factor of Safety:     FOS = min(σ_allow/σ_act, τ_allow/τ_act)</div>
     </div>
 
     <div class="login-field">
-      <label>Admin Username</label>
-      <input type="text" id="login-user" placeholder="Enter username" autocomplete="off" spellcheck="false">
+      <label>Admin Email</label>
+      <input type="email" id="login-user" placeholder="Enter admin email" autocomplete="off" spellcheck="false">
     </div>
 
     <div class="login-field">
@@ -15279,16 +15279,10 @@ function dashShowPage(name, el) {
    ADMIN DASHBOARD — CORE JS
 ═══════════════════════════════════════════ */
 /* ══════════════════════════════════════════
-   CREDENTIALS (change via Settings page)
-   Username: GearPediaAdmin
-   Password: GP@Secure#2025!
+   CREDENTIALS — Now secured via Firebase Auth
+   Username and password managed in Firebase Console
+   No credentials stored in this file
 ══════════════════════════════════════════ */
-const CREDS = {
-  username: 'GearPediaAdmin',
-  // Strong default password — stored as a simple hash simulation
-  // CHANGE THIS via the Settings page after first login
-  password: 'GP@Secure#2025!'
-};
 
 let loginAttempts = 0;
 let lockoutEnd = 0;
@@ -15305,49 +15299,70 @@ function saveData(key, val) {
 let subscribers = loadData('subscribers', []);
 let mailLog     = loadData('maillog', []);
 let emailsSent  = loadData('emailsSent', 0);
-let creds       = loadData('creds', CREDS);
+let creds       = { username: 'Firebase', password: '' }; // kept for legacy refs, not used for auth
 
-// ─── LOGIN ───
+// ─── LOGIN (Firebase Auth) ───
 function attemptLogin() {
   const now = Date.now();
   if (lockoutEnd > now) return;
 
-  const u = document.getElementById('login-user').value.trim();
   const p = document.getElementById('login-pass').value;
+  const msg = document.getElementById('login-msg');
 
-  if (u === creds.username && p === creds.password) {
-    loginAttempts = 0;
-    document.getElementById('login-screen').style.display = 'none';
-    document.getElementById('dashboard').style.display = 'block';
-    if (!window._dashClockRunning) { window._dashClockRunning = true; startClock(); }
-    renderAll();
-    // Always render feedback page and sync all badges on login
-    setTimeout(function() {
-      renderFeedbackDash();
-      var _fb = getFeedbackEntries();
-      var _b = document.getElementById('fb-count-badge'); if (_b) _b.textContent = _fb.length;
-      var _ov = document.getElementById('ov-feedback'); if (_ov) _ov.textContent = _fb.length;
-      // Make sure page-feedback is visible if it was the last active page
-      var pg = document.getElementById('page-feedback');
-      if (pg && pg.classList.contains('active')) renderFeedbackDash();
-    }, 100);
+  // Get email from username field (support both email or fixed admin email)
+  const emailInput = document.getElementById('login-user').value.trim();
+  const email = emailInput.includes('@') ? emailInput : emailInput;
+
+  if (!email || !p) {
+    if (msg) { msg.textContent = 'Please enter your email and password.'; msg.style.display = 'block'; }
+    return;
+  }
+
+  // Show loading state
+  const btn = document.querySelector('#view-dashboard .login-btn');
+  if (btn) { btn.textContent = 'Signing in…'; btn.disabled = true; }
+
+  // Use Firebase Auth via the module-scoped function
+  if (window._gpSignIn) {
+    window._gpSignIn(email, p)
+      .then(function() {
+        loginAttempts = 0;
+        document.getElementById('login-screen').style.display = 'none';
+        document.getElementById('dashboard').style.display = 'block';
+        if (!window._dashClockRunning) { window._dashClockRunning = true; startClock(); }
+        renderAll();
+        setTimeout(function() {
+          renderFeedbackDash();
+          var _fb = getFeedbackEntries();
+          var _b = document.getElementById('fb-count-badge'); if (_b) _b.textContent = _fb.length;
+          var _ov = document.getElementById('ov-feedback'); if (_ov) _ov.textContent = _fb.length;
+          var pg = document.getElementById('page-feedback');
+          if (pg && pg.classList.contains('active')) renderFeedbackDash();
+        }, 100);
+        if (btn) { btn.textContent = 'LOGIN'; btn.disabled = false; }
+      })
+      .catch(function(err) {
+        if (btn) { btn.textContent = 'LOGIN'; btn.disabled = false; }
+        loginAttempts++;
+        const remaining = 5 - loginAttempts;
+        const msg = document.getElementById('login-msg');
+
+        ['login-user','login-pass'].forEach(id => {
+          const el = document.getElementById(id);
+          if (el) { el.classList.add('error'); setTimeout(() => el.classList.remove('error'), 600); }
+        });
+
+        if (loginAttempts >= 5) {
+          lockoutEnd = now + 5 * 60 * 1000;
+          startLockout();
+        } else {
+          if (msg) msg.textContent = `⚠ Incorrect credentials — ${remaining} attempt${remaining !== 1 ? 's' : ''} remaining`;
+        }
+      });
   } else {
-    loginAttempts++;
-    const remaining = 5 - loginAttempts;
-    const msg = document.getElementById('login-msg');
-
-    ['login-user','login-pass'].forEach(id => {
-      const el = document.getElementById(id);
-      el.classList.add('error');
-      setTimeout(() => el.classList.remove('error'), 600);
-    });
-
-    if (loginAttempts >= 5) {
-      lockoutEnd = now + 5 * 60 * 1000;
-      startLockout();
-    } else {
-      msg.textContent = `⚠ Incorrect credentials — ${remaining} attempt${remaining !== 1 ? 's' : ''} remaining`;
-    }
+    // Firebase not ready yet
+    if (msg) msg.textContent = 'Auth not ready, please wait a moment and try again.';
+    if (btn) { btn.textContent = 'LOGIN'; btn.disabled = false; }
   }
 }
 
@@ -15379,6 +15394,7 @@ document.addEventListener('keydown', e => {
 
 // ─── LOGOUT ───
 function dashLogout() {
+  if (window._gpSignOut) window._gpSignOut();
   document.getElementById('dashboard').style.display = 'none';
   document.getElementById('login-screen').style.display = 'flex';
   document.getElementById('login-user').value = '';
@@ -15778,21 +15794,9 @@ document.getElementById('new-password')?.addEventListener('input', function() {
 });
 
 function changeCredentials() {
-  const newU     = document.getElementById('new-username').value.trim();
-  const curP     = document.getElementById('confirm-current-pass').value;
-  const newP     = document.getElementById('new-password').value;
-  const conP     = document.getElementById('confirm-new-pass').value;
-
-  if (curP !== creds.password) { showToast('warn', 'Current password is incorrect'); return; }
-  if (newP && newP !== conP)   { showToast('warn', 'New passwords do not match'); return; }
-  if (newP && newP.length < 12){ showToast('warn', 'Password must be 12+ characters'); return; }
-
-  if (newU) creds.username = newU;
-  if (newP) creds.password = newP;
-  saveData('creds', creds);
-  showToast('ok', 'Credentials updated successfully');
+  showToast('ok', 'Credentials are managed in Firebase Console → Authentication → Users');
   ['new-username','confirm-current-pass','new-password','confirm-new-pass'].forEach(id => {
-    document.getElementById(id).value = '';
+    const el = document.getElementById(id); if (el) el.value = '';
   });
 }
 
@@ -21471,6 +21475,7 @@ function _drawMeshVisSVG(svgId, z1, z2, m, pa) {
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
   import { getFirestore, collection, addDoc, getDocs, doc, updateDoc, serverTimestamp, query, where } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+  import { getAuth, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
 
   var firebaseConfig = {
     apiKey: "AIzaSyAh36JU3zD0FdFzvNf-qVTyw8-praSn3Wc",
@@ -21483,6 +21488,16 @@ function _drawMeshVisSVG(svgId, z1, z2, m, pa) {
 
   var app = initializeApp(firebaseConfig);
   var db = getFirestore(app);
+  var auth = getAuth(app);
+
+  // Expose Auth functions to global scope for use by non-module scripts
+  window._gpSignIn = function(email, password) {
+    return signInWithEmailAndPassword(auth, email, password);
+  };
+  window._gpSignOut = function() {
+    return signOut(auth);
+  };
+
   window._gpDb = db;
   window._gpFirestore = { collection: collection, addDoc: addDoc, serverTimestamp: serverTimestamp };
 
