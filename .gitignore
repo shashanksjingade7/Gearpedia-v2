@@ -10,3 +10,11 @@ Thumbs.db
 # Editor
 .vscode/
 .idea/
+# Secrets & Keys
+.env
+.env.*
+*.key
+service-account*.json
+*-adminsdk-*.json
+secrets/
+config/secrets.*
