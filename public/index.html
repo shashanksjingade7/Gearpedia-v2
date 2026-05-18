@@ -14996,6 +14996,7 @@ function submitFeedback(){
 
   var entry = { name:name, role:role, org:org, rating:currentRating, geartype:geartype, calculators:chips, usecase:usecase, message:msg, compare:compare, ts: new Date().toISOString() };
   try {
+  try { if(window._gpDb){ var _fs=window._gpFirestore; _fs.addDoc(_fs.collection(window._gpDb,"feedback"),Object.assign({},entry,{serverTs:_fs.serverTimestamp()})); } } catch(e){ console.warn("Firebase:",e); }
     var existing = JSON.parse(localStorage.getItem('gp-feedback') || '[]');
     existing.push(entry);
     localStorage.setItem('gp-feedback', JSON.stringify(existing));
