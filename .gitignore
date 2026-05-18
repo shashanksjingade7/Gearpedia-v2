@@ -1,0 +1,12 @@
+# Firebase
+.firebase/
+firebase-debug.log
+.firebaserc.local
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
