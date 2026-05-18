@@ -15000,6 +15000,12 @@ function submitFeedback(){
     existing.push(entry);
     localStorage.setItem('gp-feedback', JSON.stringify(existing));
   } catch(e){}
+  try {
+    if(window._gpDb){
+      var { collection, addDoc, serverTimestamp } = window._gpFirestore;
+      addDoc(collection(window._gpDb, 'feedback'), Object.assign({}, entry, { serverTs: serverTimestamp() }));
+    }
+  } catch(e){ console.warn('Firebase save failed', e); }
 
   document.getElementById('success-banner').classList.add('show');
   // Scroll the banner into view so user can see it
@@ -21456,30 +21462,22 @@ function _drawMeshVisSVG(svgId, z1, z2, m, pa) {
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
   import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
-
   const firebaseConfig = {
     apiKey: "AIzaSyAh36JU3zD0FdFzvNf-qVTyw8-praSn3Wc",
     authDomain: "gearpedia-v2.firebaseapp.com",
     projectId: "gearpedia-v2",
     storageBucket: "gearpedia-v2.firebasestorage.app",
     messagingSenderId: "687563806783",
-    appId: "1:687563806783:web:f0261e09d60553aa80008a",
-    measurementId: "G-V76GB9ECLY"
+    appId: "1:687563806783:web:f0261e09d60553aa80008a"
   };
-
   const app = initializeApp(firebaseConfig);
   const db = getFirestore(app);
-
+  window._gpDb = db;
+  window._gpFirestore = { collection, addDoc, serverTimestamp };
   window.submitSubscription = async function(email) {
     if (!email) return alert("Please enter your email.");
     await addDoc(collection(db, "subscribers"), { email, timestamp: serverTimestamp() });
     alert("Subscribed! Thank you.");
-  };
-
-  window.submitFeedback = async function(name, message, rating) {
-    if (!message) return alert("Please enter a message.");
-    await addDoc(collection(db, "feedback"), { name: name||"Anonymous", message, rating: rating||5, timestamp: serverTimestamp() });
-    alert("Feedback sent! Thank you.");
   };
 </script>
 </body>
