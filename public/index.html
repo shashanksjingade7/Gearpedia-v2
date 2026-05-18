@@ -21453,6 +21453,34 @@ function _drawMeshVisSVG(svgId, z1, z2, m, pa) {
 </script>
 
 
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+  import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
+  const firebaseConfig = {
+    apiKey: "AIzaSyAh36JU3zD0FdFzvNf-qVTyw8-praSn3Wc",
+    authDomain: "gearpedia-v2.firebaseapp.com",
+    projectId: "gearpedia-v2",
+    storageBucket: "gearpedia-v2.firebasestorage.app",
+    messagingSenderId: "687563806783",
+    appId: "1:687563806783:web:f0261e09d60553aa80008a",
+    measurementId: "G-V76GB9ECLY"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
+  window.submitSubscription = async function(email) {
+    if (!email) return alert("Please enter your email.");
+    await addDoc(collection(db, "subscribers"), { email, timestamp: serverTimestamp() });
+    alert("Subscribed! Thank you.");
+  };
+
+  window.submitFeedback = async function(name, message, rating) {
+    if (!message) return alert("Please enter a message.");
+    await addDoc(collection(db, "feedback"), { name: name||"Anonymous", message, rating: rating||5, timestamp: serverTimestamp() });
+    alert("Feedback sent! Thank you.");
+  };
+</script>
 </body>
-</html>  
+</html>
