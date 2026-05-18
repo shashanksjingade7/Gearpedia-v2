@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head><title>Firebase Test</title></head>
+<body>
+<h2>Firebase Auth Test</h2>
+<input id="email" value="jingadesshashank@gmail.com" style="width:300px"><br><br>
+<input id="pass" type="password" placeholder="Enter password" style="width:300px"><br><br>
+<button onclick="testLogin()">Test Login</button>
+<p id="result" style="color:red;font-size:18px"></p>
+
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+  import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+  const app = initializeApp({
+    apiKey: "AIzaSyAh36JU3zD0FdFzvNf-qVTyw8-praSn3Wc",
+    authDomain: "gearpedia-v2.firebaseapp.com",
+    projectId: "gearpedia-v2",
+    storageBucket: "gearpedia-v2.firebasestorage.app",
+    messagingSenderId: "687563806783",
+    appId: "1:687563806783:web:f0261e09d60553aa80008a"
+  });
+  const auth = getAuth(app);
+  window.testLogin = function() {
+    const email = document.getElementById('email').value;
+    const pass = document.getElementById('pass').value;
+    document.getElementById('result').textContent = 'Trying...';
+    signInWithEmailAndPassword(auth, email, pass)
+      .then(() => { document.getElementById('result').style.color='green'; document.getElementById('result').textContent = '✅ SUCCESS! Firebase Auth is working!'; })
+      .catch(err => { document.getElementById('result').textContent = '❌ Error: ' + err.code + ' — ' + err.message; });
+  }
+</script>
+</body>
+</html>

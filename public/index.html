@@ -331,14 +331,14 @@ body {
 
 /* Flow strip */
 .flow-strip {
-  display: flex; align-items: center; gap: 0; flex-wrap: wrap;
+  display: flex; align-items: center; gap: 0; flex-wrap: nowrap;
   margin-bottom: 2.8rem;
   animation: slideUp 0.8s ease 0.4s both;
 }
 .flow-node {
   font-family: var(--font); font-size: 0.58rem; font-weight: 600;
-  letter-spacing: 0.1em; text-transform: uppercase;
-  padding: 5px 12px; border-radius: 4px;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  padding: 5px 10px; border-radius: 4px; white-space: nowrap;
   background: var(--paper2); border: 1px solid var(--border);
   color: var(--ink2); transition: color 0.4s, background 0.4s, border-color 0.4s, box-shadow 0.4s;
 }
@@ -348,10 +348,13 @@ body {
   box-shadow: 0 0 10px rgba(0,160,197,0.12);
 }
 .flow-node.glow {
-  color: #fff;
+  color: var(--ink2);
   border-color: var(--amber2);
   background: rgba(0,160,197,0.22);
   box-shadow: 0 0 0 3px rgba(0,160,197,0.18), 0 0 18px rgba(0,160,197,0.32);
+}
+html[data-theme="dark"] .flow-node.glow {
+  color: #fff;
 }
 .flow-arr { font-size: 10px; color: var(--ink3); padding: 0 5px; opacity: 0.5; }
 .flow-arr.glow { opacity: 1; color: var(--amber2); transition: color 0.3s, opacity 0.3s; }
@@ -5341,6 +5344,7 @@ function computeMeshAnalyzer(){setTimeout(function(){_runMeshLandingImpl();},80)
 function scrollToSection(id){var el=document.getElementById(id);if(el)el.scrollIntoView({behavior:'smooth'});}
 function toggleMobileNav(){var m=document.getElementById('mobile-nav');if(m)m.classList.toggle('open');}
 </script>
+
 </head>
 <body>
 <!-- Hidden Google Translate element -->
@@ -11404,7 +11408,7 @@ Factor of Safety:     FOS = min(σ_allow/σ_act, τ_allow/τ_act)</div>
       </div>
 
       <!-- ── SUBSCRIBERS ── -->
-      <div class="page" id="page-subscribers">
+      <div class="page" id="page-subscribers" onshow="loadSubscribersFromFirestore()">
         <div class="page-header">
           <div>
             <div class="page-title">SUBSCRIBERS</div>
@@ -12634,7 +12638,7 @@ loadChecklist();
 /* ══════════════════════════════════════════
    NEWSLETTER SUBMIT
 ══════════════════════════════════════════ */
-function submitNewsletter(){
+async function submitNewsletter(){
   var name  = (document.getElementById('nl-name')  || {}).value || '';
   var email = (document.getElementById('nl-email') || {}).value || '';
   var role  = (document.getElementById('nl-role')  || {}).value || '';
@@ -12644,14 +12648,21 @@ function submitNewsletter(){
       setTimeout(function(){ inp.style.borderColor=''; inp.style.boxShadow=''; }, 1800); }
     return;
   }
-  /* ── Save subscriber to localStorage + notify Dashboard via BroadcastChannel ── */
+  var newSub = { name: name || 'Subscriber', email: email, role: role || 'Engineer', date: new Date().toISOString() };
+
+  /* ── 1. Save to Firestore ── */
+  try {
+    if (window._gpSaveSubscriber) {
+      await window._gpSaveSubscriber(newSub);
+    }
+  } catch(e){ console.warn('Firestore subscriber save:', e); }
+
+  /* ── 2. Also keep localStorage for dashboard fallback ── */
   try {
     var existing = JSON.parse(localStorage.getItem('gp_subscribers') || '[]');
-    var newSub = { name: name || 'Subscriber', email: email, role: role || 'Engineer', date: new Date().toISOString() };
     if(!existing.find(function(s){ return s.email === email; })){
       existing.push(newSub);
       localStorage.setItem('gp_subscribers', JSON.stringify(existing));
-      /* Notify the Admin Dashboard in real-time if it's open in another tab */
       try {
         var bc = new BroadcastChannel('gp_new_subscriber');
         bc.postMessage(newSub);
@@ -12659,6 +12670,19 @@ function submitNewsletter(){
       } catch(e2){}
     }
   } catch(e){}
+
+  /* ── 3. Send auto-reply email via EmailJS (hard-coded keys) ── */
+  try {
+    emailjs.init({ publicKey: '5Zp0uheIr_43npnNW' });
+    await emailjs.send('service_gs202oq', 'template_j6mkgom', {
+      to_email:  email,
+      to_name:   name || 'Subscriber',
+      subject:   'GearPedia Access Confirmed — Let\'s Calculate Something ⚙️',
+      from_name: 'GearPedia Team'
+    });
+    console.log('Welcome email sent to', email);
+  } catch(e){ console.warn('EmailJS auto-reply failed:', e); }
+
   var form = document.querySelector('.nl-form');
   var succ = document.getElementById('nl-success');
   if(form) form.style.display = 'none';
@@ -15266,10 +15290,13 @@ function dashShowPage(name, el) {
   closeDashSidebar();
   if (name === 'feedback') {
     renderFeedbackDash();
-    // Sync badge
     var _fb = getFeedbackEntries();
     var _b = document.getElementById('fb-count-badge'); if (_b) _b.textContent = _fb.length;
     var _ov = document.getElementById('ov-feedback'); if (_ov) _ov.textContent = _fb.length;
+  }
+  if (name === 'subscribers') {
+    // Refresh from Firestore whenever the subscriber page is opened
+    loadSubscribersFromFirestore();
   }
 }
 
@@ -15302,27 +15329,29 @@ let emailsSent  = loadData('emailsSent', 0);
 let creds       = { username: 'Firebase', password: '' }; // kept for legacy refs, not used for auth
 
 // ─── LOGIN (Firebase Auth) ───
-function attemptLogin() {
+async function attemptLogin() {
   const now = Date.now();
   if (lockoutEnd > now) return;
 
   const p = document.getElementById('login-pass').value;
   const msg = document.getElementById('login-msg');
-
-  // Get email from username field (support both email or fixed admin email)
-  const emailInput = document.getElementById('login-user').value.trim();
-  const email = emailInput.includes('@') ? emailInput : emailInput;
+  const email = document.getElementById('login-user').value.trim();
 
   if (!email || !p) {
     if (msg) { msg.textContent = 'Please enter your email and password.'; msg.style.display = 'block'; }
     return;
   }
 
-  // Show loading state
   const btn = document.querySelector('#view-dashboard .login-btn');
   if (btn) { btn.textContent = 'Signing in…'; btn.disabled = true; }
 
-  // Use Firebase Auth via the module-scoped function
+  // Wait up to 8 seconds for Firebase to load
+  let waited = 0;
+  while (!window._gpSignIn && waited < 8000) {
+    await new Promise(r => setTimeout(r, 200));
+    waited += 200;
+  }
+
   if (window._gpSignIn) {
     window._gpSignIn(email, p)
       .then(function() {
@@ -15356,7 +15385,7 @@ function attemptLogin() {
           lockoutEnd = now + 5 * 60 * 1000;
           startLockout();
         } else {
-          if (msg) msg.textContent = `⚠ Incorrect credentials — ${remaining} attempt${remaining !== 1 ? 's' : ''} remaining`;
+          if (msg) msg.textContent = `❌ Firebase error: ${err.code} — ${err.message}`;
         }
       });
   } else {
@@ -15530,8 +15559,13 @@ function addSubscriber() {
   showToast('ok', 'Subscriber added: ' + name);
 }
 
-function removeSubscriber(idx) {
+async function removeSubscriber(idx) {
   if (!confirm('Remove ' + subscribers[idx].name + ' from subscribers?')) return;
+  const sub = subscribers[idx];
+  // Delete from Firestore if we have a Firestore ID
+  if (sub._fid && window._gpDeleteSubscriber) {
+    try { await window._gpDeleteSubscriber(sub._fid); } catch(e) { console.warn('Firestore delete:', e); }
+  }
   subscribers.splice(idx, 1);
   saveData('subscribers', subscribers);
   renderAll();
@@ -15821,13 +15855,21 @@ function saveEmailJS() {
    Template variables used:
      to_email, to_name, subject, message, from_name
 ══════════════════════════════════════════ */
+// Hard-coded EmailJS credentials — no manual entry needed
+const _EJS_KEYS = {
+  serviceId:  'service_gs202oq',
+  templateId: 'template_j6mkgom',
+  publicKey:  '5Zp0uheIr_43npnNW'
+};
+
 function getEJS() {
-  return loadData('emailjs', null);
+  // Return hard-coded keys; fall back to saved keys if present
+  const saved = loadData('emailjs', null);
+  return (saved && saved.serviceId) ? saved : _EJS_KEYS;
 }
 
 function ejsReady() {
-  const k = getEJS();
-  return k && k.serviceId && k.templateId && k.publicKey;
+  return true; // always ready with hard-coded keys
 }
 
 function personalise(text, name, email) {
@@ -15957,15 +15999,29 @@ function formatDate(iso) {
 
 
 
-// ─── INIT: Load GearPedia subscribers from localStorage ───
-// GearPedia_Protected.html writes to localStorage 'gp_subscribers'
-// and broadcasts via BroadcastChannel 'gp_new_subscriber'
+// ─── INIT: Load subscribers from Firestore (with localStorage fallback) ───
+async function loadSubscribersFromFirestore() {
+  if (window._gpLoadSubscribers) {
+    try {
+      const fsubs = await window._gpLoadSubscribers();
+      if (fsubs && fsubs.length > 0) {
+        subscribers = fsubs;
+        saveData('subscribers', subscribers); // sync to localStorage
+        renderAll();
+        return;
+      }
+    } catch(e) { console.warn('Firestore load fallback to localStorage:', e); }
+  }
+  // Fallback: localStorage
+  subscribers = loadData('subscribers', []);
+  renderAll();
+}
+
 window.addEventListener('storage', e => {
   if (e.key === 'gp_subscribers') {
     const prev = subscribers.length;
     subscribers = loadData('subscribers', []);
     renderAll();
-    // If a new subscriber was added, fire auto-reply
     if (subscribers.length > prev) {
       const newest = subscribers[subscribers.length - 1];
       sendWelcomeAutoReply(newest);
@@ -15979,25 +16035,25 @@ try {
   bc.onmessage = (e) => {
     const newSub = e.data;
     if (newSub && newSub.email) {
-      // Avoid duplicate if storage event already added
       if (!subscribers.find(s => s.email === newSub.email)) {
         subscribers.push(newSub);
         saveData('subscribers', subscribers);
       }
       renderAll();
-      sendWelcomeAutoReply(newSub);
       showToast('bell', 'New subscriber: ' + newSub.name);
     }
   };
 } catch(e) {}
 
-// Init EmailJS on page load if keys already saved
+// Init EmailJS with hard-coded keys
 (function initEJS() {
-  const k = getEJS();
-  if (k && k.publicKey) {
-    try { emailjs.init({ publicKey: k.publicKey }); } catch(e) {}
-  }
+  try { emailjs.init({ publicKey: '5Zp0uheIr_43npnNW' }); } catch(e) {}
 })();
+
+// Load subscribers from Firestore when dashboard is ready
+window.addEventListener('load', function() {
+  setTimeout(loadSubscribersFromFirestore, 800);
+});
 
 // Load saved auto-reply settings
 (function() {
@@ -16011,12 +16067,13 @@ try {
     if (ar.welcomeBody)  document.getElementById('ar-welcome-body').value = ar.welcomeBody;
     document.getElementById('ov-auto').textContent = ar.welcome ? 'ON' : 'OFF';
   }
-  const ejs = loadData('emailjs', null);
-  if (ejs) {
-    if (ejs.serviceId)  document.getElementById('ejs-service').value  = ejs.serviceId;
-    if (ejs.templateId) document.getElementById('ejs-template').value = ejs.templateId;
-    if (ejs.publicKey)  document.getElementById('ejs-pubkey').value   = ejs.publicKey;
-  }
+  // Pre-fill EmailJS fields with hard-coded keys
+  const ejsService  = document.getElementById('ejs-service');
+  const ejsTemplate = document.getElementById('ejs-template');
+  const ejsPubkey   = document.getElementById('ejs-pubkey');
+  if (ejsService)  ejsService.value  = 'service_gs202oq';
+  if (ejsTemplate) ejsTemplate.value = 'template_j6mkgom';
+  if (ejsPubkey)   ejsPubkey.value   = '5Zp0uheIr_43npnNW';
 })();
 
 
@@ -21478,7 +21535,7 @@ function _drawMeshVisSVG(svgId, z1, z2, m, pa) {
   import { getAuth, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
 
   var firebaseConfig = {
-    apiKey: "AIzaSyAh36JU3zD0FdFzvNf-qVTyw8-praSn3Wc",
+    apiKey: "AIzaSyAh36JU3zDOFdFzvNf-qVTyw8-praSn3Wc",
     authDomain: "gearpedia-v2.firebaseapp.com",
     projectId: "gearpedia-v2",
     storageBucket: "gearpedia-v2.firebasestorage.app",
@@ -21545,12 +21602,40 @@ function _drawMeshVisSVG(svgId, z1, z2, m, pa) {
     } catch(e) { console.warn(e); }
   };
 
-  window.submitSubscription = async function(email) {
-    if (!email) return alert("Please enter your email.");
+  window._gpSaveSubscriber = async function(sub) {
     try {
-      await addDoc(collection(db, "subscribers"), { email: email, timestamp: serverTimestamp() });
-      alert("Subscribed! Thank you.");
-    } catch(e) { alert("Error: " + e.message); }
+      await addDoc(collection(db, "subscribers"), {
+        name:      sub.name  || 'Subscriber',
+        email:     sub.email || '',
+        role:      sub.role  || 'Engineer',
+        date:      sub.date  || new Date().toISOString(),
+        timestamp: serverTimestamp()
+      });
+      console.log('Subscriber saved to Firestore:', sub.email);
+    } catch(e) { console.warn('Firestore subscriber write failed:', e); throw e; }
+  };
+
+  window._gpLoadSubscribers = async function() {
+    try {
+      var snap = await getDocs(collection(db, 'subscribers'));
+      var subs = [];
+      snap.forEach(function(d) { subs.push(Object.assign({ _fid: d.id }, d.data())); });
+      subs.sort(function(a, b) { return (b.date || '') > (a.date || '') ? 1 : -1; });
+      return subs;
+    } catch(e) { console.warn('Firestore subscriber load failed:', e); return []; }
+  };
+
+  window._gpDeleteSubscriber = async function(fid) {
+    try {
+      var { deleteDoc, doc: fsDoc } = await import("https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js");
+      await deleteDoc(fsDoc(db, 'subscribers', fid));
+    } catch(e) { console.warn('Firestore subscriber delete failed:', e); throw e; }
+  };
+
+  // Legacy alias kept
+  window.submitSubscription = async function(email) {
+    if (!email) return;
+    await window._gpSaveSubscriber({ email: email });
   };
 
   window.addEventListener("load", function() { window._loadPublishedTestimonials(); });
