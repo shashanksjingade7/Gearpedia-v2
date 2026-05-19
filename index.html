@@ -2387,7 +2387,6 @@ html[data-theme="dark"] .mesh-result-card { background: rgba(1,22,56,0.45); }
 }
 
 .page { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
-#view-calc .page { max-width: 1100px; padding: 2rem 2rem 4rem; }
 
 h1 { font-size: 22px; font-weight: 500; margin-bottom: 4px; }
 .subtitle { font-size: 13px; color: var(--txt2); margin-bottom: 1.5rem; }
@@ -2395,7 +2394,6 @@ h1 { font-size: 22px; font-weight: 500; margin-bottom: 4px; }
 /* ── Gear type selector ── */
 .gear-nav {
   display: flex; flex-direction: column; gap: 10px; margin-bottom: 1.5rem;
-  max-width: 1100px; margin-left: auto; margin-right: auto; padding: 0 2rem;
 }
 .gear-group-title {
   font-size: 10px; font-weight: 600; color: var(--txt3);
@@ -2422,7 +2420,7 @@ h1 { font-size: 22px; font-weight: 500; margin-bottom: 4px; }
 }
 
 /* ── Inner tabs ── */
-.tab-row { display: flex; gap: 6px; margin-bottom: 1.25rem; flex-wrap: wrap; max-width: 1100px; margin-left: auto; margin-right: auto; padding: 0 2rem; }
+.tab-row { display: flex; gap: 6px; margin-bottom: 1.25rem; flex-wrap: wrap; }
 .tab {
   padding: 6px 14px;
   border-radius: var(--radius-sm);
@@ -2545,7 +2543,7 @@ h1 { font-size: 22px; font-weight: 500; margin-bottom: 4px; }
 .desc-box {
   font-size: 13px; color: var(--txt2); line-height: 1.7;
   padding: 10px 14px; background: var(--bg3);
-  border-radius: var(--radius-sm); margin-bottom: 0.9rem; max-width: 1100px; margin-left: auto; margin-right: auto;
+  border-radius: var(--radius-sm); margin-bottom: 0.9rem;
 }
 
 
@@ -2555,7 +2553,7 @@ h1 { font-size: 22px; font-weight: 500; margin-bottom: 4px; }
 
 /* ── Calc pane hidden ── */
 .calc-pane { display: none; }
-.calc-pane.active { display: block; max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+.calc-pane.active { display: block; }
 
 
 /* ── Geneva layout ── */
@@ -5339,7 +5337,7 @@ function _runMeshLandingImpl() {
   if(ue){ue.textContent=undercutRisk?'\u26a0 Z < '+z_min:'None';ue.className='mesh-result-value '+(undercutRisk?'warn':'ok');}
   _drawMeshVisSVG('mesh-viz-svg',z1,z2,m,pa);
 }
-function generateCalcReport(){/* overridden by full implementation below - see "4. PDF / REPORT EXPORT" section */}
+function generateCalcReport(){/* overridden by full implementation below — see "4. PDF / REPORT EXPORT" section */}
 function generatePDFReport(){generateCalcReport();}
 function runCalcMeshAnalyzer(){setTimeout(function(){if(typeof _runCalcMeshImpl==='function')_runCalcMeshImpl();},80);}
 function computeMeshAnalyzer(){setTimeout(function(){_runMeshLandingImpl();},80);}
@@ -7744,87 +7742,6 @@ function toggleMobileNav(){var m=document.getElementById('mobile-nav');if(m)m.cl
 </section>
 
 <!-- ══ FOOTER (ENHANCED) ══ -->
-
-<!-- ══ FOOTER ══ -->
-<footer>
-  <div class="wrap">
-    <div class="footer-top">
-
-      <!-- Brand col -->
-      <div class="footer-brand-col">
-        <div class="footer-brand">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-            <path d="M12 8.5A3.5 3.5 0 1 0 12 15.5A3.5 3.5 0 0 0 12 8.5Z" fill="#00a0c5"/>
-            <path d="M19.43 12.98c.04-.32.07-.64.07-.98s-.03-.66-.07-.98l2.11-1.65a.26.26 0 0 0 .06-.27l-2-3.46a.27.27 0 0 0-.32-.12l-2.49 1a6.94 6.94 0 0 0-1.69-.98l-.38-2.65A.27.27 0 0 0 14 3h-4a.27.27 0 0 0-.27.21l-.38 2.65a6.94 6.94 0 0 0-1.69.98l-2.49-1a.27.27 0 0 0-.32.12l-2 3.46a.26.26 0 0 0 .06.27l2.11 1.65a7 7 0 0 0-.07.98 7 7 0 0 0 .07.98l-2.11 1.65a.26.26 0 0 0-.06.27l2 3.46a.27.27 0 0 0 .32.12l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.04.23.23.4.47.4h4c.24 0 .43-.17.47-.4l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.12.04.25.01.32-.12l2-3.46a.26.26 0 0 0-.06-.27l-2.11-1.65z" stroke="#38bcd8" stroke-width="1.2" fill="none"/>
-          </svg>
-          GearPedia
-        </div>
-        <p class="footer-tagline">A gear calculation and physical validation platform for mechanical engineering students, designers, and professionals.</p>
-        <div class="footer-social">
-          <a class="footer-social-link" href="https://www.linkedin.com/in/shashank-s-jingade-75b436262" target="_blank" rel="noopener" title="LinkedIn">in</a>
-          <a class="footer-social-link" href="https://shashanksjingade7.github.io/Portfolio_shashank/" target="_blank" rel="noopener" title="Portfolio">⚙</a>
-          <a class="footer-social-link" href="https://github.com/" target="_blank" rel="noopener" title="GitHub">&#xe60a;</a>
-        </div>
-        <div class="footer-badge-row" style="margin-top:1.2rem">
-          <span class="footer-badge">100% Free</span>
-          <span class="footer-badge">No Login</span>
-          <span class="footer-badge">Offline OK</span>
-        </div>
-      </div>
-
-      <!-- Platform col -->
-      <div>
-        <div class="footer-col-title">Platform</div>
-        <div class="footer-col-links">
-          <a href="javascript:void(0)" onclick="scrollToSection('calculate')">Gear Calculator</a>
-          <a href="javascript:void(0)" onclick="scrollToSection('compare-tools')" onclick="openCompare()">Compare vs Physical</a>
-          <a href="javascript:void(0)" onclick="scrollToSection('visualizer')">Ratio Visualizer</a>
-          <a href="javascript:void(0)" onclick="scrollToSection('worm-calc')">Worm Efficiency</a>
-          <a href="javascript:void(0)" onclick="scrollToSection('checklist')">Design Checklist</a>
-          <a href="javascript:void(0)" onclick="scrollToSection('quick-calc')">Quick Calc Widget</a>
-          <a href="javascript:void(0)" onclick="scrollToSection('formulas')">Formula Reference</a>
-          <a href="javascript:void(0)" onclick="scrollToSection('community')">Community</a>
-        </div>
-      </div>
-
-      <!-- Standards col -->
-      <div>
-        <div class="footer-col-title">Standards</div>
-        <div class="footer-col-links">
-          <a href="javascript:void(0)">IS 9001 — Spur &amp; Helical</a>
-          <a href="javascript:void(0)">ISO 6336 — Strength</a>
-          <a href="javascript:void(0)">AGMA 6022 — Worm</a>
-          <a href="javascript:void(0)">DIN 3990 — Load Cap.</a>
-          <a href="javascript:void(0)">IS 3734 — Bevel</a>
-          <a href="javascript:void(0)">BS 721-2 — Worm Geom.</a>
-        </div>
-      </div>
-
-      <!-- About col -->
-      <div>
-        <div class="footer-col-title">About</div>
-        <div class="footer-col-links">
-          <a href="https://shashanksjingade7.github.io/Portfolio_shashank/" target="_blank" rel="noopener">Shashank S. Jingade</a>
-          <a href="https://www.linkedin.com/in/shashank-s-jingade-75b436262" target="_blank" rel="noopener">LinkedIn ↗</a>
-          <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener">CC BY-NC-ND 4.0</a>
-          <a href="javascript:void(0)">Bug Report</a>
-          <a href="javascript:void(0)">Changelog</a>
-          <a href="javascript:void(0)" onclick="showView('feedback')">Feedback</a>
-        </div>
-      </div>
-
-    </div>
-
-    <div class="footer-bottom">
-      <span class="footer-copy-new">© 2026 GearPedia — Shashank S. Jingade. All rights reserved.</span>
-      <div class="footer-bottom-links">
-        <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener">License</a>
-        <a href="javascript:void(0)" onclick="openLegalModal('privacy')">Privacy</a>
-        <a href="javascript:void(0)" onclick="openLegalModal('disclaimer')">Disclaimer</a>
-      </div>
-    </div>
-  </div>
-</footer>
 
 </div><!-- end #view-home -->
 
@@ -11932,12 +11849,93 @@ The GearPedia Team ⚙️</textarea>
 </div>
 
 
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+
+      <!-- Brand col -->
+      <div class="footer-brand-col">
+        <div class="footer-brand">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+            <path d="M12 8.5A3.5 3.5 0 1 0 12 15.5A3.5 3.5 0 0 0 12 8.5Z" fill="#00a0c5"/>
+            <path d="M19.43 12.98c.04-.32.07-.64.07-.98s-.03-.66-.07-.98l2.11-1.65a.26.26 0 0 0 .06-.27l-2-3.46a.27.27 0 0 0-.32-.12l-2.49 1a6.94 6.94 0 0 0-1.69-.98l-.38-2.65A.27.27 0 0 0 14 3h-4a.27.27 0 0 0-.27.21l-.38 2.65a6.94 6.94 0 0 0-1.69.98l-2.49-1a.27.27 0 0 0-.32.12l-2 3.46a.26.26 0 0 0 .06.27l2.11 1.65a7 7 0 0 0-.07.98 7 7 0 0 0 .07.98l-2.11 1.65a.26.26 0 0 0-.06.27l2 3.46a.27.27 0 0 0 .32.12l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.04.23.23.4.47.4h4c.24 0 .43-.17.47-.4l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.12.04.25.01.32-.12l2-3.46a.26.26 0 0 0-.06-.27l-2.11-1.65z" stroke="#38bcd8" stroke-width="1.2" fill="none"/>
+          </svg>
+          GearPedia
+        </div>
+        <p class="footer-tagline">A gear calculation and physical validation platform for mechanical engineering students, designers, and professionals.</p>
+        <div class="footer-social">
+          <a class="footer-social-link" href="https://www.linkedin.com/in/shashank-s-jingade-75b436262" target="_blank" rel="noopener" title="LinkedIn">in</a>
+          <a class="footer-social-link" href="https://shashanksjingade7.github.io/Portfolio_shashank/" target="_blank" rel="noopener" title="Portfolio">⚙</a>
+          <a class="footer-social-link" href="https://github.com/" target="_blank" rel="noopener" title="GitHub">&#xe60a;</a>
+        </div>
+        <div class="footer-badge-row" style="margin-top:1.2rem">
+          <span class="footer-badge">100% Free</span>
+          <span class="footer-badge">No Login</span>
+          <span class="footer-badge">Offline OK</span>
+        </div>
+      </div>
+
+      <!-- Platform col -->
+      <div>
+        <div class="footer-col-title">Platform</div>
+        <div class="footer-col-links">
+          <a href="javascript:void(0)" onclick="scrollToSection('calculate')">Gear Calculator</a>
+          <a href="javascript:void(0)" onclick="scrollToSection('compare-tools')" onclick="openCompare()">Compare vs Physical</a>
+          <a href="javascript:void(0)" onclick="scrollToSection('visualizer')">Ratio Visualizer</a>
+          <a href="javascript:void(0)" onclick="scrollToSection('worm-calc')">Worm Efficiency</a>
+          <a href="javascript:void(0)" onclick="scrollToSection('checklist')">Design Checklist</a>
+          <a href="javascript:void(0)" onclick="scrollToSection('quick-calc')">Quick Calc Widget</a>
+          <a href="javascript:void(0)" onclick="scrollToSection('formulas')">Formula Reference</a>
+          <a href="javascript:void(0)" onclick="scrollToSection('community')">Community</a>
+        </div>
+      </div>
+
+      <!-- Standards col -->
+      <div>
+        <div class="footer-col-title">Standards</div>
+        <div class="footer-col-links">
+          <a href="javascript:void(0)">IS 9001 — Spur &amp; Helical</a>
+          <a href="javascript:void(0)">ISO 6336 — Strength</a>
+          <a href="javascript:void(0)">AGMA 6022 — Worm</a>
+          <a href="javascript:void(0)">DIN 3990 — Load Cap.</a>
+          <a href="javascript:void(0)">IS 3734 — Bevel</a>
+          <a href="javascript:void(0)">BS 721-2 — Worm Geom.</a>
+        </div>
+      </div>
+
+      <!-- About col -->
+      <div>
+        <div class="footer-col-title">About</div>
+        <div class="footer-col-links">
+          <a href="https://shashanksjingade7.github.io/Portfolio_shashank/" target="_blank" rel="noopener">Shashank S. Jingade</a>
+          <a href="https://www.linkedin.com/in/shashank-s-jingade-75b436262" target="_blank" rel="noopener">LinkedIn ↗</a>
+          <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener">CC BY-NC-ND 4.0</a>
+          <a href="javascript:void(0)">Bug Report</a>
+          <a href="javascript:void(0)">Changelog</a>
+          <a href="javascript:void(0)" onclick="showView('feedback')">Feedback</a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <span class="footer-copy-new">© 2026 GearPedia — Shashank S. Jingade. All rights reserved.</span>
+      <div class="footer-bottom-links">
+        <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="noopener">License</a>
+        <a href="javascript:void(0)">Privacy</a>
+        <a href="javascript:void(0)">Disclaimer</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
 <!-- ══════════════════════════════════════════════════
      SCRIPTS
 ══════════════════════════════════════════════════ -->
 <script>
 
-/* ── Navigation helper -- resolves feedback.html relative to current page ── */
+/* ── Navigation helper — resolves feedback.html relative to current page ── */
 function goFeedback(e) {
   if (e) e.preventDefault();
   var base = window.location.href.replace(/\/[^/]*$/, '/');
@@ -11945,7 +11943,7 @@ function goFeedback(e) {
 }
 
 /* ══════════════════════════════════════════════════════
-   THEME -- runs immediately to prevent flash
+   THEME — runs immediately to prevent flash
 ══════════════════════════════════════════════════════ */
 (function(){
   var saved = localStorage.getItem('gp-theme') || 'light';
@@ -12047,7 +12045,7 @@ function _animFbScore(elId, barId, target, max, delay) {
 }
 
 /* ══════════════════════════════════════════════════════
-   SCROLL TO SECTION -- used by nav links instead of href
+   SCROLL TO SECTION — used by nav links instead of href
 ══════════════════════════════════════════════════════ */
 function scrollToSection(id) {
   // Make sure we're in home view first
@@ -12138,7 +12136,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 /* ══════════════════════════════════════════════════════
-   SCROLLSPY -- highlight active nav link in home view
+   SCROLLSPY — highlight active nav link in home view
 ══════════════════════════════════════════════════════ */
 (function() {
   var sectionIds = ['calculate','visualizer','features','formulas','checklist','about'];
@@ -12679,7 +12677,7 @@ async function submitNewsletter(){
     await emailjs.send('service_gs202oq', 'template_j6mkgom', {
       to_email:  email,
       to_name:   name || 'Subscriber',
-      subject:   'GearPedia Access Confirmed -- Let\'s Calculate Something ⚙️',
+      subject:   'GearPedia Access Confirmed — Let\'s Calculate Something ⚙️',
       from_name: 'GearPedia Team'
     });
     console.log('Welcome email sent to', email);
@@ -12701,7 +12699,7 @@ function v(id){return parseFloat(g(id)?g(id).value:0)||0;}
 function vi(id){return parseInt(g(id)?g(id).value:0)||0;}
 function row(k,val){return '<div class="mrow"><span class="mk">'+k+'</span><span class="mv">'+val+'</span></div>';}
 function badge(ok,msg){return '<div class="'+(ok?'ok-badge':'warn-badge')+'">'+(ok?'&#10003; ':'&#10007; ')+msg+'</div>';}
-function fmt(n,d){d=d===undefined?2:d;return isFinite(n)?n.toFixed(d):'--';}
+function fmt(n,d){d=d===undefined?2:d;return isFinite(n)?n.toFixed(d):'—';}
 
 function toothBlock(Z,d,m,pa,fw,isInternal){
   var paR=pa*Math.PI/180;
@@ -12885,7 +12883,7 @@ function calcHerringbone(){
   var uL=isIMP?'in':'mm', tqL=isIMP?'lbf·ft':'N·m', uF=isIMP?1/25.4:1, tqF=isIMP?0.7376:1;
   function uf(v,d){return (v*uF).toFixed(d||3);}
   g('hb-r-ratio').textContent=fmt(i,3)+':1';
-  g('hb-r-note').textContent='ψ='+psi+'° -- net axial thrust = 0';
+  g('hb-r-note').textContent='ψ='+psi+'° — net axial thrust = 0';
   g('hb-r-n2').textContent=fmt(N2,1)+' RPM';
   g('hb-r-t2').textContent=fmt(T2*tqF,2)+' '+tqL;
   g('hb-r-bw').textContent=uf(Btotal)+' '+uL+' total';
@@ -12943,7 +12941,7 @@ function calcPlanetary(){
   g('pl-r-pin').textContent=fmt(Pin/1000,3)+' kW';
   g('pl-r-pout').textContent=fmt(Pout/1000,3)+' kW';
   g('pl-r-checks').innerHTML=badge(c1,'Mesh: Zr='+Zr+'=Zs+2Zp='+Zs+'+'+2*Zp)
-    +badge(c2,'Spacing: (Zs+Zr)/Np='+((Zs+Zr)/Np).toFixed(3)+(c2?' integer ✓':' NOT integer -- adjust Zs or Zp'))
+    +badge(c2,'Spacing: (Zs+Zr)/Np='+((Zs+Zr)/Np).toFixed(3)+(c2?' integer ✓':' NOT integer — adjust Zs or Zp'))
     +badge(c3,'Planet clearance: '+fmt(spacing)+'mm > '+fmt(dp)+'mm')
     +badge(c4,'No undercut: df_sun='+fmt(dfs)+'mm, df_planet='+fmt(dfp)+'mm');
   g('pl-r-dims').innerHTML=row('Sun PCD ds',fmt(ds)+' mm')+row('Planet PCD dp',fmt(dp)+' mm')+row('Ring PCD dr',fmt(dr)+' mm')+row('Planet Centre Dist Ac',fmt(Ac)+' mm')+row('Face Width B',fmt(fw*m)+' mm')+row('Overall System Dia',fmt(dr)+' mm');
@@ -13067,7 +13065,7 @@ function calcZerol(){
 }
 
 /* ══════════════════════════════════════
-   3.1 WORM GEAR -- BS 721-2 / IS:3734 / AGMA 6022 / ISO 1122-1
+   3.1 WORM GEAR — BS 721-2 / IS:3734 / AGMA 6022 / ISO 1122-1
    Full step-by-step as per worm gear detailed notes
 ══════════════════════════════════════ */
 function calcWorm(){
@@ -13249,8 +13247,8 @@ function calcWorm(){
     row('cos γ', fmt(cosGamma,5)) +
     row('Gear Ratio i', fmt(i,1)+':1') +
     row('Efficiency η (dry μ='+mu+')', fmt(eff,2)+'%') +
-    row('Self-Locking (dry)', selfLockDry?'YES -- γ='+fmt(gamma,2)+'° < ρ='+fmt(rho,2)+'°':'NO -- γ='+fmt(gamma,2)+'° > ρ='+fmt(rho,2)+'°') +
-    row('Self-Locking (lub, μ/2)', selfLockLub?'YES (borderline -- add brake)':'NO');
+    row('Self-Locking (dry)', selfLockDry?'YES — γ='+fmt(gamma,2)+'° < ρ='+fmt(rho,2)+'°':'NO — γ='+fmt(gamma,2)+'° > ρ='+fmt(rho,2)+'°') +
+    row('Self-Locking (lub, μ/2)', selfLockLub?'YES (borderline — add brake)':'NO');
 
   if(g('worm-diagram') && g('worm-diagram').style.display!=='none') drawWormDiagram();
 }
@@ -13294,7 +13292,7 @@ function calcCrossedHelical(){
   g('ch-r-dims').innerHTML=row('Gear 1 PCD d₁',fmt(d1,2)+' mm')+row('Gear 2 PCD d₂',fmt(d2,2)+' mm')+row('Centre Distance a',fmt(a,2)+' mm')+row('Helix Angle ψ₁',fmt(psi1,1)+'°')+row('Helix Angle ψ₂',fmt(psi2,1)+'°')+row('Contact Type','Point contact (low load capacity)')+row('Whole Height h',fmt(2.25*mn)+' mm = 2.25×mₙ')+row('Tooth Thickness tₙ',fmt(Math.PI*mn/2,3)+' mm');
   g('ch-geo1').innerHTML=toothBlock(Z1,d1,mn,20,8,false);
   g('ch-geo2').innerHTML=toothBlock(Z2,d2,mn,20,8,false);
-  g('ch-geo-notes').innerHTML=row('Normal Module mₙ',fmt(mn)+' mm')+row('Shaft Angle Σ',sigma+'°')+row('Contact','Point -- low load capacity');
+  g('ch-geo-notes').innerHTML=row('Normal Module mₙ',fmt(mn)+' mm')+row('Shaft Angle Σ',sigma+'°')+row('Contact','Point — low load capacity');
 }
 
 /* ══════════════════════════════════════
@@ -13406,10 +13404,10 @@ function calcCycloidal(){
   g('cy-r-t2').textContent=fmt(T2,2)+' Nm';
   g('cy-r-cd').textContent=fmt(cd,2)+' mm';
   g('cy-r-d1').textContent=fmt(d1)+' mm';
-  g('cy-r-dims').innerHTML=row('Centre Distance (exact)',fmt(cd,2)+' mm -- must be precise!')+row('Pitch Dia 1',fmt(d1)+' mm')+row('Pitch Dia 2',fmt(d2)+' mm')+row('Rolling Circle r',fmt(r)+' mm')+row('Addendum (=r)',fmt(r)+' mm')+row('Dedendum',fmt(r+0.1*m,3)+' mm = r + 0.1m')+row('Whole Height h',fmt(h,3)+' mm = 2r + 0.1m')+row('Tooth Thickness t',fmt(t,3)+' mm = π×m/2')+row('Face Width B',fmt(B)+' mm');
+  g('cy-r-dims').innerHTML=row('Centre Distance (exact)',fmt(cd,2)+' mm — must be precise!')+row('Pitch Dia 1',fmt(d1)+' mm')+row('Pitch Dia 2',fmt(d2)+' mm')+row('Rolling Circle r',fmt(r)+' mm')+row('Addendum (=r)',fmt(r)+' mm')+row('Dedendum',fmt(r+0.1*m,3)+' mm = r + 0.1m')+row('Whole Height h',fmt(h,3)+' mm = 2r + 0.1m')+row('Tooth Thickness t',fmt(t,3)+' mm = π×m/2')+row('Face Width B',fmt(B)+' mm');
   g('cy-geo1').innerHTML=row('Teeth Z₁',Z1)+row('Pitch Dia d₁',fmt(d1)+' mm')+row('Rolling Circle r',fmt(r)+' mm')+row('Addendum',fmt(r)+' mm (=r)')+row('Dedendum',fmt(r+0.1*m,3)+' mm')+row('Height h',fmt(h,3)+' mm')+row('Thickness t',fmt(t,3)+' mm')+row('Face Width B',fmt(B)+' mm');
   g('cy-geo2').innerHTML=row('Teeth Z₂',Z2)+row('Pitch Dia d₂',fmt(d2)+' mm')+row('Rolling Circle r',fmt(r)+' mm')+row('Addendum',fmt(r)+' mm (=r)')+row('Dedendum',fmt(r+0.1*m,3)+' mm')+row('Height h',fmt(h,3)+' mm')+row('Thickness t',fmt(t,3)+' mm')+row('Face Width B',fmt(B)+' mm');
-  g('cy-geo-notes').innerHTML=row('Module m',fmt(m)+' mm')+row('Rolling Circle Radius r',fmt(r)+' mm')+row('Centre Distance',fmt(cd,2)+' mm (critical -- no tolerance)');
+  g('cy-geo-notes').innerHTML=row('Module m',fmt(m)+' mm')+row('Rolling Circle Radius r',fmt(r)+' mm')+row('Centre Distance',fmt(cd,2)+' mm (critical — no tolerance)');
 }
 
 /* ══════════════════════════════════════
@@ -13429,16 +13427,16 @@ function calcHarmonic(){
   g('hd-r-checks').innerHTML=badge(c1,'Tooth difference ΔZ='+dZ+' (must be exactly 2)')
     +badge(c2,'Flex spline Zf='+Zf+' < Circular spline Zc='+Zc)
     +badge(c3,'Module m='+m+'mm ≤ 1.0mm (typical for harmonic drives)')
-    +badge(i>=30&&i<=320,'Ratio '+fmt(i,1)+' in typical range 30:1-320:1');
-  g('hd-r-dims').innerHTML=row('Circular Spline PCD',fmt(dc)+' mm')+row('Flex Spline PCD',fmt(df)+' mm')+row('Tooth Difference ΔZ',dZ)+row('Gear Ratio i',fmt(i,1)+':1')+row('Backlash','≈ 0-3 arc-minutes')+row('Addendum a',fmt(m)+' mm = 1.00×m')+row('Dedendum b (reduced)',fmt(m)+' mm = 1.00×m (flex constraint)')+row('Tooth Height h',fmt(h)+' mm = 2.00×m (reduced)')+row('Tooth Thickness t',fmt(t,3)+' mm = π×m/2');
-  g('hd-geo-cs').innerHTML=row('Teeth Zc',Zc)+row('Pitch Dia dc',fmt(dc)+' mm')+row('Type','Rigid -- fixed housing')+row('Addendum a',fmt(m)+' mm = 1.00×m')+row('Dedendum b',fmt(m)+' mm = 1.00×m')+row('Height h',fmt(h)+' mm = 2.00×m')+row('Thickness t',fmt(t,3)+' mm')+row('Tip Clearance',fmt(0.05*m,3)+' mm = 0.05×m');
-  g('hd-geo-fs').innerHTML=row('Teeth Zf',Zf)+row('Pitch Dia df',fmt(df)+' mm')+row('Type','Flexible -- cup-shaped output')+row('Addendum a',fmt(m)+' mm = 1.00×m')+row('Dedendum b',fmt(m)+' mm = 1.00×m')+row('Height h',fmt(h)+' mm = 2.00×m')+row('Thickness t',fmt(t,3)+' mm')+row('Material','Flex steel -- fatigue critical');
-  g('hd-geo-notes').innerHTML=row('Module m',fmt(m)+' mm (typical 0.2-1.0)')+row('Backlash','0-3 arc-minutes')+row('Efficiency η',fmt(eff*100,0)+'%')+row('Radial Deflection δ',fmt(dc/(2*i),3)+' mm (wave generator oval)');
+    +badge(i>=30&&i<=320,'Ratio '+fmt(i,1)+' in typical range 30:1–320:1');
+  g('hd-r-dims').innerHTML=row('Circular Spline PCD',fmt(dc)+' mm')+row('Flex Spline PCD',fmt(df)+' mm')+row('Tooth Difference ΔZ',dZ)+row('Gear Ratio i',fmt(i,1)+':1')+row('Backlash','≈ 0–3 arc-minutes')+row('Addendum a',fmt(m)+' mm = 1.00×m')+row('Dedendum b (reduced)',fmt(m)+' mm = 1.00×m (flex constraint)')+row('Tooth Height h',fmt(h)+' mm = 2.00×m (reduced)')+row('Tooth Thickness t',fmt(t,3)+' mm = π×m/2');
+  g('hd-geo-cs').innerHTML=row('Teeth Zc',Zc)+row('Pitch Dia dc',fmt(dc)+' mm')+row('Type','Rigid — fixed housing')+row('Addendum a',fmt(m)+' mm = 1.00×m')+row('Dedendum b',fmt(m)+' mm = 1.00×m')+row('Height h',fmt(h)+' mm = 2.00×m')+row('Thickness t',fmt(t,3)+' mm')+row('Tip Clearance',fmt(0.05*m,3)+' mm = 0.05×m');
+  g('hd-geo-fs').innerHTML=row('Teeth Zf',Zf)+row('Pitch Dia df',fmt(df)+' mm')+row('Type','Flexible — cup-shaped output')+row('Addendum a',fmt(m)+' mm = 1.00×m')+row('Dedendum b',fmt(m)+' mm = 1.00×m')+row('Height h',fmt(h)+' mm = 2.00×m')+row('Thickness t',fmt(t,3)+' mm')+row('Material','Flex steel — fatigue critical');
+  g('hd-geo-notes').innerHTML=row('Module m',fmt(m)+' mm (typical 0.2–1.0)')+row('Backlash','0–3 arc-minutes')+row('Efficiency η',fmt(eff*100,0)+'%')+row('Radial Deflection δ',fmt(dc/(2*i),3)+' mm (wave generator oval)');
 }
 
 
 /* ══════════════════════════════════════
-   DIAGRAM DRAW FUNCTIONS -- All Gear Types
+   DIAGRAM DRAW FUNCTIONS — All Gear Types
 ══════════════════════════════════════ */
 
 /* Helper: generic gear tooth SVG with module-based profile */
@@ -13494,7 +13492,7 @@ function drawHelicalDiagram(){
   svg+=pitchCircle(cx2,0,rs2,'#BA7517');
   svg+=svgLabel(cx1,rs1+18,'Z₁='+Z1+' d₁='+fmt(d1)+'mm mt='+fmt(mt,3),'#555');
   svg+=svgLabel(cx2,rs2+18,'Z₂='+Z2+' d₂='+fmt(d2)+'mm','#555');
-  svg+=svgLabel(0,-Math.max(rs1,rs2)-16,'ψ='+psi+'° Helical Gear Pair -- mₙ='+mn+'mm','#185FA5',10);
+  svg+=svgLabel(0,-Math.max(rs1,rs2)-16,'ψ='+psi+'° Helical Gear Pair — mₙ='+mn+'mm','#185FA5',10);
   g('helical-svg').innerHTML=svg;
 }
 
@@ -13522,7 +13520,7 @@ function drawHerringboneDiagram(){
   svg+=pitchCircle(cx2,0,rs2,'#BA7517');
   svg+=svgLabel(cx1,rs1+18,'Z₁='+Z1+' d₁='+fmt(d1)+'mm','#555');
   svg+=svgLabel(cx2,rs2+18,'Z₂='+Z2+' d₂='+fmt(d2)+'mm','#555');
-  svg+=svgLabel(0,-Math.max(rs1,rs2)-18,'ψ='+psi+'° Herringbone -- Net Axial = 0','#185FA5',10);
+  svg+=svgLabel(0,-Math.max(rs1,rs2)-18,'ψ='+psi+'° Herringbone — Net Axial = 0','#185FA5',10);
   g('herringbone-svg').innerHTML=svg;
 }
 
@@ -13541,7 +13539,7 @@ function drawInternalDiagram(){
   svg+='<line x1="0" y1="0" x2="'+(ac-rpS)+'" y2="0" stroke="#888" stroke-width="1" stroke-dasharray="3,2"/>';
   svg+=svgLabel(0,rrS+14,'Ring Z='+Zr+' dr='+fmt(dr)+'mm','#185FA5');
   svg+=svgLabel(ac-rpS,rpS+14,'Pinion Z='+Zp+' dp='+fmt(dp)+'mm','#BA7517');
-  svg+=svgLabel(0,-rrS-12,'Internal Gear -- a='+fmt((rr-rp),1)+'mm','#185FA5',10);
+  svg+=svgLabel(0,-rrS-12,'Internal Gear — a='+fmt((rr-rp),1)+'mm','#185FA5',10);
   g('internal-svg').innerHTML=svg;
 }
 
@@ -13605,7 +13603,7 @@ function drawStraightBevelDiagram(){
   var sigR=sigma*Math.PI/180, i=Z2/Z1;
   var g1=Math.atan(Math.sin(sigR)/(i+Math.cos(sigR)))*180/Math.PI;
   var g2=sigma-g1;
-  drawBevelDiagram('straightbevel-svg',Z1,Z2,m,g1,g2,'Straight Bevel -- Σ='+sigma+'°',false,0);
+  drawBevelDiagram('straightbevel-svg',Z1,Z2,m,g1,g2,'Straight Bevel — Σ='+sigma+'°',false,0);
 }
 
 /* ── 2.2 SPIRAL BEVEL DIAGRAM ── */
@@ -13614,13 +13612,13 @@ function drawSpiralBevelDiagram(){
   var sigR=sigma*Math.PI/180, i=Z2/Z1;
   var g1=Math.atan(Math.sin(sigR)/(i+Math.cos(sigR)))*180/Math.PI;
   var g2=sigma-g1;
-  drawBevelDiagram('spiralbevel-svg',Z1,Z2,m,g1,g2,'Spiral Bevel -- ψ='+psi+'° Σ='+sigma+'°',true,psi);
+  drawBevelDiagram('spiralbevel-svg',Z1,Z2,m,g1,g2,'Spiral Bevel — ψ='+psi+'° Σ='+sigma+'°',true,psi);
 }
 
 /* ── 2.3 MITER DIAGRAM ── */
 function drawMiterDiagram(){
   var Z=vi('mi-z')||24, m=v('mi-m')||3;
-  drawBevelDiagram('miter-svg',Z,Z,m,45,45,'Miter Gear -- 1:1 ratio, γ=45°',false,0);
+  drawBevelDiagram('miter-svg',Z,Z,m,45,45,'Miter Gear — 1:1 ratio, γ=45°',false,0);
 }
 
 /* ── 2.4 ZEROL DIAGRAM ── */
@@ -13629,10 +13627,10 @@ function drawZerolDiagram(){
   var sigR=sigma*Math.PI/180, i=Z2/Z1;
   var g1=Math.atan(Math.sin(sigR)/(i+Math.cos(sigR)))*180/Math.PI;
   var g2=sigma-g1;
-  drawBevelDiagram('zerol-svg',Z1,Z2,m,g1,g2,'Zerol Bevel -- ψ_mid=0°',true,0);
+  drawBevelDiagram('zerol-svg',Z1,Z2,m,g1,g2,'Zerol Bevel — ψ_mid=0°',true,0);
 }
 
-/* ── 3.1 WORM GEAR DIAGRAM -- BS 721-2 ── */
+/* ── 3.1 WORM GEAR DIAGRAM — BS 721-2 ── */
 function drawWormDiagram(){
   var z1=parseInt(g('wo-z1').value)||1, z2=vi('wo-zw')||40, m=v('wo-m')||3, q=v('wo-q')||17;
   var gammaR=Math.atan(z1/q), gamma=gammaR*180/Math.PI;
@@ -13685,7 +13683,7 @@ function drawWormDiagram(){
   // Dimension labels
   svg+=svgLabel(wc_x,wc_y+ra1+16,'Worm: d₁='+fmt(d1)+'mm da₁='+fmt(da1)+'mm','#185FA5',9);
   svg+=svgLabel(gc_x,gc_y+ra2+22,'Wheel: d₂='+fmt(d2)+'mm da₂='+fmt(da2)+'mm','#BA7517',9);
-  svg+=svgLabel(gc_x,gc_y-ra2-18,'Worm Gear Pair -- BS 721-2 -- C='+fmt((d1+d2)/2,1)+'mm','#555',10);
+  svg+=svgLabel(gc_x,gc_y-ra2-18,'Worm Gear Pair — BS 721-2 — C='+fmt((d1+d2)/2,1)+'mm','#555',10);
   g('worm-svg').innerHTML=svg;
 }
 
@@ -13708,7 +13706,7 @@ function drawHypoidDiagram(){
   svg+=svgLabel(-eS/2,-10,'E='+E+'mm','#E24B4A',9);
   svg+=svgLabel(0,r2+16,'Ring Z='+Z2+' d₂='+fmt(d2)+'mm','#BA7517',9);
   svg+=svgLabel(-eS,r1*0.5+r1+14,'Pinion Z='+Z1+' d₁='+fmt(d1)+'mm (offset)','#185FA5',9);
-  svg+=svgLabel(0,-r2-16,'Hypoid Gear -- Offset E='+E+'mm','#555',10);
+  svg+=svgLabel(0,-r2-16,'Hypoid Gear — Offset E='+E+'mm','#555',10);
   g('hypoid-svg').innerHTML=svg;
 }
 
@@ -13730,7 +13728,7 @@ function drawCrossedHelicalDiagram(){
   svg+=pitchCircle(cx2,0,rs2,'#BA7517');
   svg+=svgLabel(cx1,rs1+18,'ψ₁='+psi1+'° Z='+Z1,'#185FA5',9);
   svg+=svgLabel(cx2,rs2+18,'ψ₂='+fmt(psi2,0)+'° Z='+Z2,'#BA7517',9);
-  svg+=svgLabel((cx1+cx2)/2,-Math.max(rs1,rs2)-16,'Crossed Helical -- Σ='+sigma+'° Point Contact','#555',10);
+  svg+=svgLabel((cx1+cx2)/2,-Math.max(rs1,rs2)-16,'Crossed Helical — Σ='+sigma+'° Point Contact','#555',10);
   g('crossedhelical-svg').innerHTML=svg;
 }
 
@@ -13753,9 +13751,9 @@ function drawSpiroidDiagram(){
     var w=15-ti*1.5;
     svg+='<line x1="'+(-w)+'" y1="'+ty+'" x2="'+w+'" y2="'+(ty+5)+'" stroke="#185FA5" stroke-width="1" opacity="0.6"/>';
   }
-  svg+=svgLabel(0,-70,'Spiroid -- N='+N+' starts','#185FA5',9);
+  svg+=svgLabel(0,-70,'Spiroid — N='+N+' starts','#185FA5',9);
   svg+=svgLabel(0,20+rg*0.3+16,'Face Gear Z='+Z+' d='+fmt(dg)+'mm','#BA7517',9);
-  svg+=svgLabel(0,-90,'Spiroid Gear -- tapered worm + face gear','#555',10);
+  svg+=svgLabel(0,-90,'Spiroid Gear — tapered worm + face gear','#555',10);
   g('spiroid-svg').innerHTML=svg;
 }
 
@@ -13786,8 +13784,8 @@ function drawRackDiagram(){
   svg+='<line x1="50" y1="'+(rackY+add+ded+5)+'" x2="'+(50+vArr)+'" y2="'+(rackY+add+ded+5)+'" stroke="#E24B4A" stroke-width="2.5"/>';
   svg+='<polygon points="'+(50+vArr)+','+(rackY+add+ded+1)+' '+(50+vArr+12)+','+(rackY+add+ded+5)+' '+(50+vArr)+','+(rackY+add+ded+9)+'" fill="#E24B4A"/>';
   svg+=svgLabel(0,-rs-8-rs-18,'Pinion Z='+Z+' d='+fmt(d)+'mm','#185FA5',9);
-  svg+=svgLabel(0,rackY+add+ded+22,'Rack -- p='+fmt(m*Math.PI,2)+'mm','#BA7517',9);
-  svg+=svgLabel(0,-120,'Rack & Pinion -- m='+m+'mm','#555',10);
+  svg+=svgLabel(0,rackY+add+ded+22,'Rack — p='+fmt(m*Math.PI,2)+'mm','#BA7517',9);
+  svg+=svgLabel(0,-120,'Rack & Pinion — m='+m+'mm','#555',10);
   g('rack-svg').innerHTML=svg;
 }
 
@@ -13807,7 +13805,7 @@ function drawFaceGearDiagram(){
   svg+='<line x1="0" y1="'+(-rp*2-30)+'" x2="0" y2="30" stroke="#aaa" stroke-width="0.8" stroke-dasharray="4,3"/>';
   svg+=svgLabel(0,-(rp+20)-rp-14,'Pinion Z='+Zp+' d='+fmt(dp)+'mm','#185FA5',9);
   svg+=svgLabel(0,30+roS*0.3+16,'Face Gear Z='+Zf+' Ri='+fmt(Ri,0)+' Ro='+fmt(Ro,0)+'mm','#BA7517',9);
-  svg+=svgLabel(0,-(rp*2+50),'Face Gear -- 90° engagement','#555',10);
+  svg+=svgLabel(0,-(rp*2+50),'Face Gear — 90° engagement','#555',10);
   g('facegear-svg').innerHTML=svg;
 }
 
@@ -13828,7 +13826,7 @@ function drawScrewGearDiagram(){
   svg+=pitchCircle(cx2,0,rs2,'#BA7517');
   svg+=svgLabel(cx1,rs1+18,'ψ₁='+psi1+'° Z='+Z1,'#185FA5',9);
   svg+=svgLabel(cx2,rs2+18,'ψ₂='+fmt(psi2,0)+'° Z='+Z2,'#BA7517',9);
-  svg+=svgLabel((cx1+cx2)/2,-Math.max(rs1,rs2)-16,'Screw Gear -- Point Contact -- Σ='+sigma+'°','#555',10);
+  svg+=svgLabel((cx1+cx2)/2,-Math.max(rs1,rs2)-16,'Screw Gear — Point Contact — Σ='+sigma+'°','#555',10);
   g('screwgear-svg').innerHTML=svg;
 }
 
@@ -13868,7 +13866,7 @@ function drawCycloidalDiagram(){
   svg+=pitchCircle(cx2,0,rs2,'#BA7517');
   svg+=svgLabel(cx1,rs1+18,'Z='+Z1+' d='+fmt(d1)+'mm','#185FA5',9);
   svg+=svgLabel(cx2,rs2+18,'Z='+Z2+' d='+fmt(d2)+'mm','#BA7517',9);
-  svg+=svgLabel(0,-Math.max(rs1,rs2)-16,'Cycloidal Gear -- r_rolling='+fmt(rc)+'mm','#555',10);
+  svg+=svgLabel(0,-Math.max(rs1,rs2)-16,'Cycloidal Gear — r_rolling='+fmt(rc)+'mm','#555',10);
   g('cycloidal-svg').innerHTML=svg;
 }
 
@@ -13894,7 +13892,7 @@ function drawHarmonicDiagram(){
   svg+=svgLabel(0,rcS+16,'Circular Spline Zc='+Zc,'#185FA5',9);
   svg+=svgLabel(rfS*0.7,-rfS*0.5,'Flex Spline Zf='+Zf,'#BA7517',9);
   svg+=svgLabel(0,0+8,'Wave Gen','#0F6E56',9);
-  svg+=svgLabel(0,-rcS-18,'Harmonic Drive -- i='+fmt(i,0)+':1  ΔZ='+dZ,'#555',10);
+  svg+=svgLabel(0,-rcS-18,'Harmonic Drive — i='+fmt(i,0)+':1  ΔZ='+dZ,'#555',10);
   g('harmonic-svg').innerHTML=svg;
 }
 
@@ -13912,7 +13910,7 @@ function smCheck(ok, label, req, actual) {
   return '<div class="mrow"><span class="mk">'+label+'</span><span class="mv" style="color:'+(ok?'var(--txt-ok)':'var(--txt-warn)')+'">'+actual+' '+(ok?'✓':'✗ (req '+req+')')+'</span></div>';
 }
 function smBanner(ok) {
-  return '<div style="padding:8px 12px;border-radius:var(--radius-sm);font-size:12px;font-weight:500;margin-top:6px;display:flex;align-items:center;gap:6px;background:'+(ok?'var(--bg-ok)':'var(--bg-warn)')+';color:'+(ok?'var(--txt-ok)':'var(--txt-warn)')+'">'+(ok?'✓ All stress checks passed':'✗ Design requires review -- see checks above')+'</div>';
+  return '<div style="padding:8px 12px;border-radius:var(--radius-sm);font-size:12px;font-weight:500;margin-top:6px;display:flex;align-items:center;gap:6px;background:'+(ok?'var(--bg-ok)':'var(--bg-warn)')+';color:'+(ok?'var(--txt-ok)':'var(--txt-warn)')+'">'+(ok?'✓ All stress checks passed':'✗ Design requires review — see checks above')+'</div>';
 }
 function setStressResults(pfx, metrics, checks) {
   var mEl=document.getElementById(pfx+'-stress-metrics');
@@ -13993,7 +13991,7 @@ function gearStressCalc(pfx, z1, z2, m_mod, b_src) {
     [[sig_b<=sb_eff,'Bending stress σb', '≤'+sb_eff.toFixed(1)+' MPa', sig_b.toFixed(1)+' MPa'],
      [sig_c<=sc_eff,'Contact stress σc', '≤'+sc_eff.toFixed(1)+' MPa', sig_c.toFixed(1)+' MPa'],
      [z1>=17,'Min teeth Z₁ (undercut)','≥17','Z₁='+z1],
-     [b>=8*m_mod&&b<=16*m_mod,'Face width range','8m-16m = '+( 8*m_mod).toFixed(1)+'-'+(16*m_mod).toFixed(1)+' mm',b.toFixed(1)+' mm']]
+     [b>=8*m_mod&&b<=16*m_mod,'Face width range','8m–16m = '+( 8*m_mod).toFixed(1)+'–'+(16*m_mod).toFixed(1)+' mm',b.toFixed(1)+' mm']]
   );
 }
 
@@ -14103,7 +14101,7 @@ function calcRackStress(){
      ['Torque T',T.toFixed(0),'N·mm']],
     [[sig_b<=sb/sf,'Pinion bending σb','≤'+(sb/sf).toFixed(1)+' MPa',sig_b.toFixed(1)+' MPa'],
      [sig_c<=sc/sf,'Contact stress σc','≤'+(sc/sf).toFixed(1)+' MPa',sig_c.toFixed(1)+' MPa'],
-     [b>=8*m&&b<=16*m,'Face width range','8m-16m = '+(8*m).toFixed(1)+'-'+(16*m).toFixed(1)+' mm',b.toFixed(1)+' mm']]
+     [b>=8*m&&b<=16*m,'Face width range','8m–16m = '+(8*m).toFixed(1)+'–'+(16*m).toFixed(1)+' mm',b.toFixed(1)+' mm']]
   );
 }
 function calcFaceGearStress(){var z1=vi2('fg-zp')||16,z2=vi2('fg-zf')||64,m=v2('fg-m')||2;gearStressCalc('fg',z1,z2,m);}
@@ -14219,7 +14217,7 @@ function fillMat(pfx) {
 ══════════════════════════════════════════════════════════════ */
 
 /* Number formatter for section 6 */
-function n(val, dec){ dec = dec === undefined ? 2 : dec; return isFinite(val) ? val.toFixed(dec) : '--'; }
+function n(val, dec){ dec = dec === undefined ? 2 : dec; return isFinite(val) ? val.toFixed(dec) : '—'; }
 
 /* Geneva metric card */
 function mechMetric(label, val, unit, hi){
@@ -14280,7 +14278,7 @@ function renderStatus(elId, checks){
   var allOk = checks.every(function(c){ return c.ok; });
   el.innerHTML = '<div class="mech-banner '+(allOk?'ok':'fail')+'">'
     + (allOk ? '✓ All stress and geometry checks passed'
-             : '✗ Design requires review -- see failed checks above') + '</div>';
+             : '✗ Design requires review — see failed checks above') + '</div>';
 }
 
 /* Geneva diagram tab switcher */
@@ -14362,7 +14360,7 @@ function calcGeneva(){
 
   var cEl = document.getElementById('g_checks');
   if(cEl) cEl.innerHTML = '<div class="mech-checks">' +
-    mechCheck(n>=3&&n<=10, 'Slot count 3-10', 'n='+n) +
+    mechCheck(n>=3&&n<=10, 'Slot count 3–10', 'n='+n) +
     mechCheck(r>0, 'Crank radius > 0', 'r='+r+' mm') +
     mechCheck(a>r, 'Centre dist > crank radius', 'a='+n2(a)+' mm') +
     mechCheck(rp<r*0.2, 'Pin radius < 0.2r', 'r_p='+rp+' vs 0.2r='+n2(r*0.2)) +
@@ -14373,8 +14371,8 @@ function calcGeneva(){
   drawGeneva(n, r, a, R, alpha);
 }
 
-function n1(val){ return isFinite(val)?val.toFixed(1):'--'; }
-function n2(val){ return isFinite(val)?val.toFixed(2):'--'; }
+function n1(val){ return isFinite(val)?val.toFixed(1):'—'; }
+function n2(val){ return isFinite(val)?val.toFixed(2):'—'; }
 
 function drawGeneva(n, r, a, R, alpha){
   var svg = document.getElementById('g_svg'); if(!svg) return;
@@ -14542,7 +14540,7 @@ function calcRatchet(){
     {name:'Shear stress on pawl',    req:'≤'+ss+' MPa', actual:n(tau_pawl)+' MPa', ok:tau_pawl<=ss},
     {name:'Bending stress (pawl)',   req:'≤'+sb+' MPa', actual:n(sig_bend)+' MPa', ok:sig_bend<=sb},
     {name:'No-slip condition α<φ',   req:'α < '+n(phi_f*180/Math.PI,1)+'°', actual:'α='+n(alpha*180/Math.PI,1)+'°', ok:alpha<=phi_f},
-    {name:'Tooth height h vs pitch', req:n(p/3,1)+'-'+n(p/2,1)+' mm', actual:h+' mm', ok:h>=p/3&&h<=p/2},
+    {name:'Tooth height h vs pitch', req:n(p/3,1)+'–'+n(p/2,1)+' mm', actual:h+' mm', ok:h>=p/3&&h<=p/2},
     {name:'Factor of Safety (FOS)',  req:'≥ 2.0 (impact)', actual:n(fos), ok:fos>=2.0}
   ];
 
@@ -14590,13 +14588,13 @@ function calcRatchet(){
       var allOk2 = checks.every(function(c){ return c.ok; });
       sEl.innerHTML = '<div class="mech-banner '+(allOk2?'ok':'fail')+'">'
         + (allOk2 ? '✓ All stress and geometry checks passed'
-                  : '✗ Design requires review -- see failed checks above') + '</div>';
+                  : '✗ Design requires review — see failed checks above') + '</div>';
     }
   }
 }
 
 /* ══════════════════════════════════════════
-   SITE PROTECTION -- Anti-Copy & Anti-Inspect
+   SITE PROTECTION — Anti-Copy & Anti-Inspect
 ══════════════════════════════════════════ */
 
 /* ══════════════════════════════════════════════════════════════
@@ -14658,13 +14656,13 @@ function updateSFDashboard(pfx, sig_b, sig_c, sb, sc) {
   var vClass, vText;
   if (minSF >= 2.0) {
     vClass = 'v-ok';
-    vText  = '✓ Safe for 10⁷ cycles -- Both stress criteria satisfied (SF ≥ 2.0)';
+    vText  = '✓ Safe for 10⁷ cycles — Both stress criteria satisfied (SF ≥ 2.0)';
   } else if (minSF >= 1.25) {
     vClass = 'v-warn';
-    vText  = '⚠ Marginal -- Increase face width or use higher-strength material (SF ≥ 1.25)';
+    vText  = '⚠ Marginal — Increase face width or use higher-strength material (SF ≥ 1.25)';
   } else {
     vClass = 'v-fail';
-    vText  = '✗ Unsafe -- Redesign required: increase module, face width, or upgrade material';
+    vText  = '✗ Unsafe — Redesign required: increase module, face width, or upgrade material';
   }
   if (verdict) { verdict.className = 'sf-verdict ' + vClass; verdict.textContent = vText; }
 }
@@ -14766,7 +14764,7 @@ function runDesignCompare() {
     var label = row[0], key = row[1], unit = row[2], dec = row[3], higherBetter = row[4];
     var va = results.a[key], vb = results.b[key];
     var fa = va.toFixed(dec), fb = vb.toFixed(dec);
-    var ca = 'cmp-eq', cb = 'cmp-eq', better = '--';
+    var ca = 'cmp-eq', cb = 'cmp-eq', better = '—';
     if (Math.abs(va - vb) > 0.001) {
       var aWins = higherBetter ? va > vb : va < vb;
       ca = aWins ? 'cmp-hi' : 'cmp-lo';
@@ -14786,7 +14784,7 @@ function runDesignCompare() {
        + '<td style="font-weight:700;color:var(--txt)">Overall Verdict</td>'
        + '<td class="' + (results.a.ok ? 'cmp-hi' : 'cmp-lo') + '">' + aVerdict + '</td>'
        + '<td class="' + (results.b.ok ? 'cmp-hi' : 'cmp-lo') + '">' + bVerdict + '</td>'
-       + '<td>--</td></tr>';
+       + '<td>—</td></tr>';
 
   tbody.innerHTML = html;
 }
@@ -14817,7 +14815,7 @@ document.addEventListener('click', function(e) {
     /* Don't fire inside inputs (except Ctrl combos) */
     var inInput = ['INPUT','TEXTAREA','SELECT'].indexOf(document.activeElement.tagName) !== -1;
 
-    /* Ctrl + Enter -- Calculate active pane */
+    /* Ctrl + Enter — Calculate active pane */
     if (e.ctrlKey && e.key === 'Enter') {
       e.preventDefault();
       /* Find the active pane's calc button */
@@ -14832,7 +14830,7 @@ document.addEventListener('click', function(e) {
       }
     }
 
-    /* Ctrl + D -- Toggle dark mode */
+    /* Ctrl + D — Toggle dark mode */
     if (e.ctrlKey && e.key === 'd') {
       e.preventDefault();
       if (typeof toggleTheme === 'function') {
@@ -14842,7 +14840,7 @@ document.addEventListener('click', function(e) {
       }
     }
 
-    /* Ctrl + R -- Reset inputs in active pane (prevent page reload) */
+    /* Ctrl + R — Reset inputs in active pane (prevent page reload) */
     if (e.ctrlKey && e.key === 'r') {
       e.preventDefault();
       var activePane = document.querySelector('.calc-pane.active');
@@ -14861,7 +14859,7 @@ document.addEventListener('click', function(e) {
       }
     }
 
-    /* Escape -- close compare modal */
+    /* Escape — close compare modal */
     if (e.key === 'Escape') {
       closeDesignCompare();
     }
@@ -14938,7 +14936,7 @@ document.addEventListener('DOMContentLoaded', function() {
     'input, textarea { -webkit-user-select:text!important; user-select:text!important; }';
   document.head.appendChild(style);
 
-  /* 6. Debugger trap -- slows automated scraping */
+  /* 6. Debugger trap — slows automated scraping */
   setInterval(function(){ (function(){})['constructor']('debugger')(); }, 3000);
 })();
 
@@ -14950,7 +14948,7 @@ window.onload=function(){
     calcRack,calcFaceGear,calcScrewGear,
     calcNonCircular,calcCycloidal,calcHarmonic];
   fns.forEach(function(fn){try{fn();}catch(e){console.warn(fn.name,e);}});
-  // Section 6 -- mechanisms
+  // Section 6 — mechanisms
   [calcGeneva, calcCam, calcRatchet].forEach(function(fn){try{fn();}catch(e){console.warn(fn.name,e);}});
   var stressFns=[calcSpurStress,calcHelicalStress,calcHerringboneStress,calcInternalStress,
     calcPlanetaryStress,calcStraightBevelStress,calcSpiralBevelStress,calcMiterStress,
@@ -15098,7 +15096,7 @@ function renderFeedbackDash() {
   var today = new Date().toDateString();
   var todayCount = entries.filter(function(e){ return e.ts && new Date(e.ts).toDateString() === today; }).length;
   var fiveStars = entries.filter(function(e){ return e.rating === 5; }).length;
-  var avg = total ? (entries.reduce(function(s,e){ return s + (e.rating||0); },0) / total).toFixed(1) : '--';
+  var avg = total ? (entries.reduce(function(s,e){ return s + (e.rating||0); },0) / total).toFixed(1) : '—';
   
   var el = document.getElementById('fbs-total'); if(el) el.textContent = total;
   el = document.getElementById('fbs-avg'); if(el) el.textContent = avg;
@@ -15305,10 +15303,10 @@ function dashShowPage(name, el) {
 
 
 /* ═══════════════════════════════════════════
-   ADMIN DASHBOARD -- CORE JS
+   ADMIN DASHBOARD — CORE JS
 ═══════════════════════════════════════════ */
 /* ══════════════════════════════════════════
-   CREDENTIALS -- Now secured via Firebase Auth
+   CREDENTIALS — Now secured via Firebase Auth
    Username and password managed in Firebase Console
    No credentials stored in this file
 ══════════════════════════════════════════ */
@@ -15387,7 +15385,7 @@ async function attemptLogin() {
           lockoutEnd = now + 5 * 60 * 1000;
           startLockout();
         } else {
-          if (msg) msg.textContent = `❌ Firebase error: ${err.code} -- ${err.message}`;
+          if (msg) msg.textContent = `❌ Firebase error: ${err.code} — ${err.message}`;
         }
       });
   } else {
@@ -15608,7 +15606,7 @@ async function sendReply() {
     showToast('ok', 'Reply sent to ' + s.name);
   } catch(err) {
     console.error(err);
-    showToast('err', 'Send failed -- check EmailJS keys in Settings');
+    showToast('err', 'Send failed — check EmailJS keys in Settings');
   }
 }
 
@@ -15623,7 +15621,7 @@ const TEMPLATES = {
     subject: 'Welcome to GearPedia ⚙️',
     body: `Hi {name},
 
-Welcome aboard GearPedia -- the engineer's gear encyclopedia!
+Welcome aboard GearPedia — the engineer's gear encyclopedia!
 
 You now have access to 19 gear types, 100+ formulas, and stress calculators.
 
@@ -15642,10 +15640,10 @@ Check it out,
 The GearPedia Team`
   },
   feature: {
-    subject: 'New Feature Alert -- GearPedia ✨',
+    subject: 'New Feature Alert — GearPedia ✨',
     body: `Hi {name},
 
-Exciting news -- GearPedia just launched a new feature!
+Exciting news — GearPedia just launched a new feature!
 
 [Describe your feature here]
 
@@ -15724,7 +15722,7 @@ async function sendEmail() {
       showToast('ok', 'Email sent to ' + email);
     } catch(e) {
       logEmail(email, name, subject, 'failed');
-      showToast('err', 'Send failed -- check EmailJS keys');
+      showToast('err', 'Send failed — check EmailJS keys');
     }
   }
 
@@ -15757,7 +15755,7 @@ function saveAutoReply() {
 }
 
 /* Called by GearPedia_Protected.html (same browser/tab via BroadcastChannel)
-   when a new subscriber signs up -- sends the welcome auto-reply immediately */
+   when a new subscriber signs up — sends the welcome auto-reply immediately */
 async function sendWelcomeAutoReply(subscriber) {
   const ar = loadData('autoreply', null);
   if (!ar || !ar.welcome) return;
@@ -15857,7 +15855,7 @@ function saveEmailJS() {
    Template variables used:
      to_email, to_name, subject, message, from_name
 ══════════════════════════════════════════ */
-// Hard-coded EmailJS credentials -- no manual entry needed
+// Hard-coded EmailJS credentials — no manual entry needed
 const _EJS_KEYS = {
   serviceId:  'service_gs202oq',
   templateId: 'template_j6mkgom',
@@ -15931,8 +15929,8 @@ async function testEmailJS() {
     statusEl.style.background = 'rgba(255,69,96,0.08)';
     statusEl.style.border = '1px solid rgba(255,69,96,0.25)';
     statusEl.style.color = 'var(--red)';
-    statusEl.textContent = '❌ Failed: ' + (err.text || err.message || JSON.stringify(err)) + ' -- Check your keys and template variables.';
-    showToast('err', 'Test failed -- check keys');
+    statusEl.textContent = '❌ Failed: ' + (err.text || err.message || JSON.stringify(err)) + ' — Check your keys and template variables.';
+    showToast('err', 'Test failed — check keys');
   }
 }
 
@@ -16093,7 +16091,7 @@ function togglePublishFeedback(idx) {
   // Re-render published testimonials on home page
   renderPublishedTestimonials();
   var action = entries[idx].published ? 'Published' : 'Unpublished';
-  showToast(entries[idx].published ? 'ok' : 'del', action + ' -- ' + (entries[idx].name || 'entry'));
+  showToast(entries[idx].published ? 'ok' : 'del', action + ' — ' + (entries[idx].name || 'entry'));
 }
 
 /* ── Render published feedback as testimonials in feedback tab ── */
@@ -16115,7 +16113,7 @@ function renderPublishedTestimonials() {
     return;
   }
 
-  /* Has published entries -- hide empty state, show grid */
+  /* Has published entries — hide empty state, show grid */
   if (emptyEl) emptyEl.style.display = 'none';
   grid.style.display = '';
 
@@ -16144,7 +16142,7 @@ function renderPublishedTestimonials() {
 }
 
 /* ═══════════════════════════════════════════════════════════
-   FEATURE 1 -- GLOSSARY TOOLTIP SYSTEM
+   FEATURE 1 — GLOSSARY TOOLTIP SYSTEM
    Hover any [data-term] element to see definition + formula
 ═══════════════════════════════════════════════════════════ */
 (function() {
@@ -16236,7 +16234,7 @@ function renderPublishedTestimonials() {
     'lewis-form': {
       term: 'Lewis Form Factor (Y)',
       def: 'A dimensionless factor that represents the tooth geometry\'s effect on bending strength. Derived from the involute tooth profile as a function of tooth count and pressure angle.',
-      formula: 'Y = f(Z, α)  -- tabulated per IS 9001 / AGMA',
+      formula: 'Y = f(Z, α)  — tabulated per IS 9001 / AGMA',
       std: 'IS 9001 · AGMA 2101-D04'
     }
   };
@@ -16277,7 +16275,7 @@ function renderPublishedTestimonials() {
     }, 120);
   }
 
-  // Event delegation -- works for dynamically created elements too
+  // Event delegation — works for dynamically created elements too
   document.addEventListener('mouseover', function(e) {
     var el = e.target.closest ? e.target.closest('[data-term]') : null;
     if (el) showTip(el);
@@ -16295,7 +16293,7 @@ function renderPublishedTestimonials() {
 
 
 /* ═══════════════════════════════════════════════════════════
-   FEATURE 2 -- URL HASH BOOKMARK / SHARE
+   FEATURE 2 — URL HASH BOOKMARK / SHARE
    Reads & writes: #m=2&z1=20&z2=40&pa=20&b=20&ft=500
    Works with the landing-page quick-calc widget.
 ═══════════════════════════════════════════════════════════ */
@@ -16386,7 +16384,7 @@ function showGpToast(icon, text) {
 
 
 /* ═══════════════════════════════════════════════════════════
-   FEATURE 3 -- PWA: MANIFEST (blob) + SERVICE WORKER
+   FEATURE 3 — PWA: MANIFEST (blob) + SERVICE WORKER
    Registered inline so no separate files are needed for
    a single-file distribution.
 ═══════════════════════════════════════════════════════════ */
@@ -16396,7 +16394,7 @@ function showGpToast(icon, text) {
     var manifest = {
       name: 'GearPedia',
       short_name: 'GearPedia',
-      description: 'Complete gear design calculator -- 21 gear types, ISO/AGMA standards, offline-ready.',
+      description: 'Complete gear design calculator — 21 gear types, ISO/AGMA standards, offline-ready.',
       start_url: './',
       display: 'standalone',
       background_color: '#010d1f',
@@ -16457,28 +16455,25 @@ function showGpToast(icon, text) {
         "        caches.open(CACHE).then(function(c){ c.put(e.request, clone); });",
         "        return response;",
         "      }).catch(function() {",
-        "        return caches.match('/') || new Response('GearPedia offline -- open the HTML file directly.', { headers: {'Content-Type':'text/plain'} });",
+        "        return caches.match('/') || new Response('GearPedia offline — open the HTML file directly.', { headers: {'Content-Type':'text/plain'} });",
         "      });",
         "    })",
         "  );",
         "});"
       ].join('\n');
-      // Blob URL SW registration is blocked by browsers (blob: protocol not allowed for SW).
-      // Use a data: URI approach which works cross-browser for inline SWs.
-      var b64 = btoa(unescape(encodeURIComponent(swCode)));
-      var swUrl = 'data:application/javascript;base64,' + b64;
+      var swBlob = new Blob([swCode], { type: 'application/javascript' });
+      var swUrl  = URL.createObjectURL(swBlob);
       navigator.serviceWorker.register(swUrl, { scope: './' }).then(function(reg) {
         console.log('GearPedia PWA: service worker registered ✓', reg.scope);
       }).catch(function(err) {
-        // data: URI SW also restricted in some browsers/contexts — silently skip
-        console.log('GearPedia PWA: SW registration skipped (offline cache unavailable)');
+        console.log('GearPedia PWA: SW registration skipped (', err.message, ')');
       });
     } catch(e) { console.log('GearPedia PWA: skipped', e.message); }
   }
 })();
 
 /* ═══════════════════════════════════════════════════════════════════════
-   FEATURE: FULL CALCULATOR URL HASH -- 21 GEAR PANES
+   FEATURE: FULL CALCULATOR URL HASH — 21 GEAR PANES
    Encodes active gear + all its inputs into window.location.hash
    Format: #calc=spur&sp-z1=20&sp-m=2&sp-z2=40...
    Restores on page load if hash starts with #calc=
@@ -16510,7 +16505,7 @@ function showGpToast(icon, text) {
     'ratchet':      ['rat_torque','rat_sf','rat_d','rat_z','rat_b','rat_h','rat_alpha','rat_lp','rat_wp','rat_npawl']
   };
 
-  /* ── Calc function map -- call to recompute after loading hash ── */
+  /* ── Calc function map — call to recompute after loading hash ── */
   var CALC_FN = {
     'spur': function(){ if(typeof calcSpur==='function') calcSpur(); },
     'helical': function(){ if(typeof calcHelical==='function') calcHelical(); },
@@ -16637,19 +16632,19 @@ function showGpToast(icon, text) {
 
 
 /* ═══════════════════════════════════════════════════════════════════════
-   FEATURE: EXPANDED GLOSSARY -- ALL 21 GEAR CALCULATOR LABELS
+   FEATURE: EXPANDED GLOSSARY — ALL 21 GEAR CALCULATOR LABELS
    Uses MutationObserver + label text matching to auto-inject data-term
    attributes into any .field label or .sec-title in the calculator panes.
-   No HTML changes needed -- fully runtime injection.
+   No HTML changes needed — fully runtime injection.
 ═══════════════════════════════════════════════════════════════════════ */
 (function() {
 
-  /* Extended glossary -- covers all terms used in the full calc suite */
+  /* Extended glossary — covers all terms used in the full calc suite */
   var CALC_GLOSSARY = {
     /* ── Core gear geometry ── */
     'module': {
       term: 'Module (m)',
-      def: 'The fundamental sizing unit of a gear -- pitch diameter divided by tooth count. ALL mating gears must share the same module. Standard modules: 1, 1.25, 1.5, 2, 2.5, 3, 4, 5, 6, 8, 10 mm.',
+      def: 'The fundamental sizing unit of a gear — pitch diameter divided by tooth count. ALL mating gears must share the same module. Standard modules: 1, 1.25, 1.5, 2, 2.5, 3, 4, 5, 6, 8, 10 mm.',
       formula: 'm = d / Z  (mm)',
       std: 'IS 9001 · ISO 54 · DIN 780'
     },
@@ -16668,12 +16663,12 @@ function showGpToast(icon, text) {
     'face width': {
       term: 'Face Width (B)',
       def: 'The axial length of the gear tooth. Typically expressed as a multiple of module: B = k×m. Larger face width increases load capacity but adds weight and alignment sensitivity.',
-      formula: 'B = k × m,  k = 8-16 for spur/helical',
+      formula: 'B = k × m,  k = 8–16 for spur/helical',
       std: 'IS 9001 · ISO 6336-1'
     },
     'helix angle': {
       term: 'Helix Angle (ψ)',
-      def: 'The angle between the tooth trace and the gear axis. Zero for spur gears. Typical range 15°-35° for helical gears. Causes axial thrust force (Fa = Ft × tan ψ).',
+      def: 'The angle between the tooth trace and the gear axis. Zero for spur gears. Typical range 15°–35° for helical gears. Causes axial thrust force (Fa = Ft × tan ψ).',
       formula: 'tan(ψ) = πd / L_axial  (axial pitch geometry)',
       std: 'ISO 1122-1 · IS 9001'
     },
@@ -16691,7 +16686,7 @@ function showGpToast(icon, text) {
     },
     'overlap ratio': {
       term: 'Overlap Ratio (εβ)',
-      def: 'Face contact ratio for helical gears -- number of axial pitches in the face width. Must be ≥ 1.0 for smooth power transfer. Increases with helix angle and face width.',
+      def: 'Face contact ratio for helical gears — number of axial pitches in the face width. Must be ≥ 1.0 for smooth power transfer. Increases with helix angle and face width.',
       formula: 'εβ = B × sin(ψ) / (π × mₙ)',
       std: 'ISO 21771 · IS 9001'
     },
@@ -16728,13 +16723,13 @@ function showGpToast(icon, text) {
     },
     'spiral angle': {
       term: 'Mean Spiral Angle (ψₘ)',
-      def: 'Helix angle at the mean cone distance of a spiral bevel or hypoid gear. Typical range: 25°-45°. Higher angles give smoother meshing but increase axial loads.',
+      def: 'Helix angle at the mean cone distance of a spiral bevel or hypoid gear. Typical range: 25°–45°. Higher angles give smoother meshing but increase axial loads.',
       formula: 'ψ_mean measured at R_mean on the pitch cone',
       std: 'AGMA 2005 · ISO 23509'
     },
     'face width ratio': {
       term: 'Face Width Ratio (b/R)',
-      def: 'Ratio of face width to cone distance for bevel gears. Recommended: 0.25-0.35. Exceeding 0.35 causes uneven load distribution across the tooth length.',
+      def: 'Ratio of face width to cone distance for bevel gears. Recommended: 0.25–0.35. Exceeding 0.35 causes uneven load distribution across the tooth length.',
       formula: 'b ≤ 0.3 × R  and  b ≤ 10 × m  (both apply)',
       std: 'IS 3734 · AGMA 2005'
     },
@@ -16747,13 +16742,13 @@ function showGpToast(icon, text) {
     },
     'diameter factor': {
       term: 'Diameter Factor (q)',
-      def: 'Ratio of worm pitch diameter to module. Standardised values per BS 721-2: 6-40. Controls worm stiffness and efficiency. Larger q = stiffer worm, but lower efficiency.',
+      def: 'Ratio of worm pitch diameter to module. Standardised values per BS 721-2: 6–40. Controls worm stiffness and efficiency. Larger q = stiffer worm, but lower efficiency.',
       formula: 'q = d₁ / m  (dimensionless)',
       std: 'BS 721-2 · ISO 9085'
     },
     'friction coefficient': {
       term: 'Friction Coefficient (μ)',
-      def: 'Sliding friction between worm and wheel tooth flanks. Dry steel on bronze: μ ≈ 0.10-0.15. Lubricated: μ ≈ 0.03-0.08. Directly determines efficiency and self-locking.',
+      def: 'Sliding friction between worm and wheel tooth flanks. Dry steel on bronze: μ ≈ 0.10–0.15. Lubricated: μ ≈ 0.03–0.08. Directly determines efficiency and self-locking.',
       formula: 'η = tan(γ) / tan(γ + ρ),  ρ = arctan(μ)',
       std: 'AGMA 6022 · BS 721-2'
     },
@@ -16791,7 +16786,7 @@ function showGpToast(icon, text) {
     /* ── Geneva / Indexing ── */
     'geneva slots': {
       term: 'Geneva Wheel Slots (n)',
-      def: 'Number of slots in the Geneva wheel -- equals the number of indexed positions per revolution. More slots = finer resolution but higher dwell percentage. Minimum: 3, typical: 4-8.',
+      def: 'Number of slots in the Geneva wheel — equals the number of indexed positions per revolution. More slots = finer resolution but higher dwell percentage. Minimum: 3, typical: 4–8.',
       formula: 'Index angle = 360° / n per step',
       std: 'DIN 71009 · ANSI B5.45'
     },
@@ -16816,7 +16811,7 @@ function showGpToast(icon, text) {
     },
     'flex spline': {
       term: 'Flex Spline (Zf)',
-      def: 'The thin-walled elastic cup or ring gear in a harmonic drive. Deformed by the wave generator into an ellipse -- engaging the circular spline at two diametrically opposite zones.',
+      def: 'The thin-walled elastic cup or ring gear in a harmonic drive. Deformed by the wave generator into an ellipse — engaging the circular spline at two diametrically opposite zones.',
       formula: 'ΔZ = Zc − Zf = 2  (must equal 2)',
       std: 'ISO/TR 14179'
     },
@@ -16824,12 +16819,12 @@ function showGpToast(icon, text) {
     'lewis form factor': {
       term: 'Lewis Form Factor (Y)',
       def: 'A dimensionless geometry factor representing tooth shape\'s effect on bending strength. Derived from the Lewis parabola inscribed in the tooth profile. Increases with tooth count.',
-      formula: 'Y = f(Z, α) -- from IS 9001 / AGMA 908 tables',
+      formula: 'Y = f(Z, α) — from IS 9001 / AGMA 908 tables',
       std: 'IS 9001 · AGMA 908-B89'
     },
     'velocity factor': {
       term: 'Velocity Factor (Kv / Cv)',
-      def: 'Dynamic load correction factor -- accounts for impact and vibration at the tooth mesh due to pitch-line velocity. Decreases with speed. Use Barth equation for cut gears.',
+      def: 'Dynamic load correction factor — accounts for impact and vibration at the tooth mesh due to pitch-line velocity. Decreases with speed. Use Barth equation for cut gears.',
       formula: 'Kv = (A + √V) / A  [AGMA],  Cv = 3/(3+√V)  [Barth]',
       std: 'AGMA 2101 · IS 9001'
     },
@@ -16854,14 +16849,14 @@ function showGpToast(icon, text) {
     /* ── Ratchet ── */
     'ratchet angle': {
       term: 'Ratchet Tooth Angle (α)',
-      def: 'The face angle of each ratchet tooth. Determines engagement and self-locking. For self-locking: α < arctan(μ) ≈ 8.5° (for μ=0.15). Typical range: 10°-30°.',
+      def: 'The face angle of each ratchet tooth. Determines engagement and self-locking. For self-locking: α < arctan(μ) ≈ 8.5° (for μ=0.15). Typical range: 10°–30°.',
       formula: 'No back-slip: α < ρ = arctan(μ)',
       std: 'DIN 1286 · ANSI B92'
     },
     /* ── General ── */
     'efficiency': {
       term: 'Mechanical Efficiency (η)',
-      def: 'Ratio of output power to input power, accounting for tooth friction and bearing losses. Spur/helical: 97-99%. Worm: 40-95% (depends on lead angle). Harmonic: 65-90%.',
+      def: 'Ratio of output power to input power, accounting for tooth friction and bearing losses. Spur/helical: 97–99%. Worm: 40–95% (depends on lead angle). Harmonic: 65–90%.',
       formula: 'η = P_out / P_in = T₂N₂ / T₁N₁',
       std: 'IS 9001 · ISO 6336'
     },
@@ -17009,11 +17004,11 @@ function showGpToast(icon, text) {
    GEARPEDIA LANGUAGE TRANSLATOR v8
    Engine  : Google Translate Widget (official embed)
              translate.google.com/translate_a/element.js
-             -- 100% free · No API key · Works from file://
-             -- Supports all languages · No CORS issues ever
-             -- Google's own script handles everything internally
+             — 100% free · No API key · Works from file://
+             — Supports all languages · No CORS issues ever
+             — Google's own script handles everything internally
    Strategy: Drive the hidden Google Translate widget via
-             document.cookie  (".googtrans")  -- the standard
+             document.cookie  (".googtrans")  — the standard
              way all GT implementations work under the hood.
              The widget rewrites every text node on the page
              automatically, handles RTL, font loading, etc.
@@ -17098,7 +17093,7 @@ function showGpToast(icon, text) {
     document.cookie = 'googtrans=; ' + expire + '; domain=.'+  location.hostname;
 
     if (code === 'en') {
-      /* Resetting to English -- set empty cookie then trigger widget reset */
+      /* Resetting to English — set empty cookie then trigger widget reset */
       triggerGTWidget('');
     } else {
       /* Set the translation cookie and trigger the widget */
@@ -17117,7 +17112,7 @@ function showGpToast(icon, text) {
       sel.dispatchEvent(new Event('input',  { bubbles: true }));
       return;
     }
-    /* Widget not ready yet -- retry every 200ms (max 20 times = 4s) */
+    /* Widget not ready yet — retry every 200ms (max 20 times = 4s) */
     if (!triggerGTWidget._tries) triggerGTWidget._tries = 0;
     if (triggerGTWidget._tries++ < 20) {
       setTimeout(function () { triggerGTWidget(code); }, 200);
@@ -17230,7 +17225,7 @@ function showGpToast(icon, text) {
        (cookie is already cleared so page loads in English) */
     var _resetTimer = setTimeout(function () {
       var bodyText = document.body ? document.body.innerText : '';
-      /* Check if page still looks translated -- if so, reload */
+      /* Check if page still looks translated — if so, reload */
       var sel = document.querySelector('.goog-te-combo');
       if (sel && sel.value !== '' && sel.value !== 'en') {
         location.reload();
@@ -17272,7 +17267,7 @@ function showGpToast(icon, text) {
 
 
 /* ╔══════════════════════════════════════════════════════════════╗
-   ║   GEARPEDIA V4 -- 5 NEW FEATURES (fully wired)              ║
+   ║   GEARPEDIA V4 — 5 NEW FEATURES (fully wired)              ║
    ║   1. Unit Toggle SI ↔ IMP                                  ║
    ║   2. Involute Gear SVG Visualizer                          ║
    ║   3. Session History Log + CSV export                      ║
@@ -17319,7 +17314,7 @@ function _unitToast(sys) {
     t.style.cssText = 'position:fixed;bottom:28px;left:50%;transform:translateX(-50%);background:var(--ink);color:var(--paper2);font-family:var(--font);font-size:0.72rem;letter-spacing:0.1em;padding:10px 22px;border-radius:10px;border:1px solid var(--border2);z-index:9999;opacity:0;transition:opacity 0.3s;pointer-events:none;box-shadow:0 4px 20px rgba(0,0,0,0.4);';
     document.body.appendChild(t);
   }
-  t.textContent = sys==='SI' ? '⚙ SI Units active -- mm · N·m · kW' : '⚙ Imperial Units active -- in · lbf·ft · hp';
+  t.textContent = sys==='SI' ? '⚙ SI Units active — mm · N·m · kW' : '⚙ Imperial Units active — in · lbf·ft · hp';
   t.style.opacity = '1';
   clearTimeout(t._t); t._t = setTimeout(function(){ t.style.opacity='0'; }, 2400);
 }
@@ -17332,7 +17327,7 @@ function gpPowerLabel() { return GP_UNITS==='IMP' ? 'hp' : 'kW'; }
 function gpPowerConvert(kw) { return GP_UNITS==='IMP' ? +(kw*1.34102).toFixed(3) : kw; }
 
 /* ══════════════════════════════════════════════════════════════
-   2. GEAR SVG VISUALIZER -- simplified involute tooth outline
+   2. GEAR SVG VISUALIZER — simplified involute tooth outline
 ══════════════════════════════════════════════════════════════ */
 
 function _drawGearOutlineSVG(cx, cy, z, rPitch, rAdd, rDed, col, flipPhase) {
@@ -17402,7 +17397,7 @@ function _buildGearVizHTML(m, z1, z2, pa_deg, svgId, viewBox) {
   html += '<text x="0" y="' + (dimY + 12) + '" text-anchor="middle" ' + fnt + ' fill="' + cDim + '">a = ' + gpToImperial((r1+r2)).toFixed(2) + uL + '</text>';
   /* legend top-left */
   var lx = -VW/2 + 8, ly = -VH/2 + 12;
-  html += '<text x="' + lx + '" y="' + ly + '" ' + fnt + ' fill="' + c1 + '" opacity="0.8">-- Pitch Ø</text>';
+  html += '<text x="' + lx + '" y="' + ly + '" ' + fnt + ' fill="' + c1 + '" opacity="0.8">— Pitch Ø</text>';
   html += '<text x="' + lx + '" y="' + (ly+11) + '" ' + fnt + ' fill="' + c1 + '" opacity="0.5">-- Base Ø</text>';
   html += '<text x="' + lx + '" y="' + (ly+22) + '" ' + fnt + ' fill="' + cDim + '">α = ' + pa_deg + '°  m = ' + m + '</text>';
 
@@ -17427,7 +17422,7 @@ function _vTeeth(cx,cy,z,rA,rD,col,phase){
 }
 /* spur / helical / generic pair */
 /* ══════════════════════════════════════════════════════
-   ENGINEERING DRAWING STYLE -- Parallel Shaft Gears
+   ENGINEERING DRAWING STYLE — Parallel Shaft Gears
    Matches ISO/ANSI technical illustration conventions
    Front view with proper involute teeth, hub bore,
    centrelines, pitch circles, and dimension annotations
@@ -17435,7 +17430,7 @@ function _vTeeth(cx,cy,z,rA,rD,col,phase){
 
 /* Helper: draw one engineering-style gear wheel (front view) */
 function _ezGear(cx, cy, z, rA, rP, rD, rB, rHub, col, phase, gearType) {
-  /* Tooth path -- involute-approximated profile */
+  /* Tooth path — involute-approximated profile */
   var step = 2*Math.PI/z, ht = Math.PI/(2.4*z);
   var pts = [];
   for (var t = 0; t < z; t++) {
@@ -17457,7 +17452,7 @@ function _ezGear(cx, cy, z, rA, rP, rD, rB, rHub, col, phase, gearType) {
   var clipId = 'ezgc_' + Math.abs(cx).toFixed(0) + '_' + Math.abs(cy).toFixed(0) + '_' + col.replace(/[^a-zA-Z0-9]/g,'').slice(-4);
   var h = '';
 
-  /* Helical: add diagonal hatch lines on tooth face -- properly clipped */
+  /* Helical: add diagonal hatch lines on tooth face — properly clipped */
   if (gearType === 'helical') {
     h += '<defs><clipPath id="'+clipId+'"><path d="'+toothPath+'"/></clipPath></defs>';
     h += '<path d="'+toothPath+'" fill="'+col+'" fill-opacity="'+fillOp+'" stroke="'+col+'" stroke-width="1.4" stroke-linejoin="round"/>';
@@ -17482,13 +17477,13 @@ function _ezGear(cx, cy, z, rA, rP, rD, rB, rHub, col, phase, gearType) {
     h += '<path d="'+toothPath+'" fill="'+col+'" fill-opacity="'+fillOp+'" stroke="'+col+'" stroke-width="1.4" stroke-linejoin="round"/>';
   }
 
-  /* Addendum (tip) circle -- thin solid */
+  /* Addendum (tip) circle — thin solid */
   h += '<circle cx="'+cx.toFixed(1)+'" cy="'+cy.toFixed(1)+'" r="'+rA.toFixed(1)+'" fill="none" stroke="'+col+'" stroke-width="0.4" opacity="0.3"/>';
-  /* Pitch circle -- dashed */
+  /* Pitch circle — dashed */
   h += '<circle cx="'+cx.toFixed(1)+'" cy="'+cy.toFixed(1)+'" r="'+rP.toFixed(1)+'" fill="none" stroke="'+col+'" stroke-width="0.9" stroke-dasharray="6,3" opacity="0.75"/>';
-  /* Base circle -- fine dash */
+  /* Base circle — fine dash */
   h += '<circle cx="'+cx.toFixed(1)+'" cy="'+cy.toFixed(1)+'" r="'+rB.toFixed(1)+'" fill="none" stroke="'+col+'" stroke-width="0.45" stroke-dasharray="2,4" opacity="0.35"/>';
-  /* Hub bore circle -- solid, prominent */
+  /* Hub bore circle — solid, prominent */
   var boreR = Math.max(rHub, 3.5);
   h += '<circle cx="'+cx.toFixed(1)+'" cy="'+cy.toFixed(1)+'" r="'+boreR.toFixed(1)+'" fill="'+(isDark?'#010d1f':'#eaf4fb')+'" stroke="'+col+'" stroke-width="1.5" opacity="0.95"/>';
   /* Key-way slot on hub */
@@ -17505,7 +17500,7 @@ function _ezGear(cx, cy, z, rA, rP, rD, rB, rHub, col, phase, gearType) {
   return h;
 }
 
-/* Spur Gear Pair -- front engineering view */
+/* Spur Gear Pair — front engineering view */
 function _vizSpur(svg, m, z1, z2, pa, gearType) {
   gearType = gearType || 'spur';
   var p = _vizPal();
@@ -17528,7 +17523,7 @@ function _vizSpur(svg, m, z1, z2, pa, gearType) {
   var clCol = isDark ? 'rgba(100,190,230,0.4)' : 'rgba(0,80,160,0.35)';
   h += '<line x1="0" y1="'+(-(Math.max(ra1,ra2)+14))+'" x2="0" y2="'+(Math.max(ra1,ra2)+14)+'" stroke="'+clCol+'" stroke-width="0.5" stroke-dasharray="3,3"/>';
 
-  /* Draw gears -- phase meshed */
+  /* Draw gears — phase meshed */
   var phase2 = Math.PI/z2;
   h += _ezGear(cx1, cy, z1, ra1, r1s, rd1, rb1, hub1, p.c1, 0, gearType);
   h += _ezGear(cx2, cy, z2, ra2, r2s, rd2, rb2, hub2, p.c2, phase2, gearType);
@@ -17608,7 +17603,7 @@ function _vizRack(svg,m,zp,pa){
 }
 
 /* ══════════════════════════════════════════════════════════
-   RACK & PINION -- 5 Engineering Views (Front/Back/Top/Side/Bottom/Perspective)
+   RACK & PINION — 5 Engineering Views (Front/Back/Top/Side/Bottom/Perspective)
 ══════════════════════════════════════════════════════════ */
 function _mvRackPinion(m, zp, pa) {
   var p = _mvPal();
@@ -17801,7 +17796,7 @@ function _mvRackPinion(m, zp, pa) {
   gpEl('mv-persp-svg').innerHTML = pe;
 }
 /* internal / ring gear */
-/* Internal / Ring Gear -- engineering front view */
+/* Internal / Ring Gear — engineering front view */
 function _vizInternal(svg, m, zp, zr, pa) {
   var p = _vizPal();
   var rp=m*zp/2, rr=m*zr/2;
@@ -17842,7 +17837,7 @@ function _vizInternal(svg, m, zp, zr, pa) {
   svg.setAttribute('viewBox', '-200 -200 400 400');
 }
 
-/* Planetary (Epicyclic) Gear -- engineering front view */
+/* Planetary (Epicyclic) Gear — engineering front view */
 function _vizPlanetary(svg, m, zs, np) {
   var p = _vizPal();
   var zpEl=document.getElementById('pl-zp'), zp=zpEl?parseInt(zpEl.value)||20:20;
@@ -17960,7 +17955,7 @@ function _vizBevel(svg, m, z1, z2, label, sigma) {
      Cone axis for gear2 = horizontal (world Y-axis)
      Cone axis for gear1 = vertical (world Z-axis)                                    */
 
-  /* GEAR 2 (large wheel) -- axis along world Y, apex at origin */
+  /* GEAR 2 (large wheel) — axis along world Y, apex at origin */
   /* In gear2 frame: u=radial out from axis, v=along axis */
   /* Pitch cone: rim at (Rs*sin(delta2), Rs*cos(delta2)) in (r,v) */
   var g2_apex_world = {x:0, y:0};  /* isometric origin */
@@ -17973,7 +17968,7 @@ function _vizBevel(svg, m, z1, z2, label, sigma) {
     return { sx: isoX(wx,wy,wz), sy: isoY(wx,wy,wz) };
   };
 
-  /* GEAR 1 (pinion) -- axis along world Z (vertical), offset so gears mesh */
+  /* GEAR 1 (pinion) — axis along world Z (vertical), offset so gears mesh */
   /* apex at same world origin, cone along Z */
   /* Point: x=R*sin(delta1)*cos(a), y=R*sin(delta1)*sin(a), z=R*cos(delta1) */
   var cos = Math.cos, sin = Math.sin, PI = Math.PI;
@@ -17984,7 +17979,7 @@ function _vizBevel(svg, m, z1, z2, label, sigma) {
   };
 
   /* ───────────────────────────────────────────────
-     DRAW GEAR 2 -- Large Wheel (horizontal axis)
+     DRAW GEAR 2 — Large Wheel (horizontal axis)
   ─────────────────────────────────────────────── */
   var nTeeth2 = Math.min(z2, 36);
   var nTeeth1 = Math.min(z1, 24);
@@ -17997,7 +17992,7 @@ function _vizBevel(svg, m, z1, z2, label, sigma) {
   function pt1(R, dlt, a){ var wx=R*sin(dlt)*cos(a), wy=R*sin(dlt)*sin(a), wz=R*cos(dlt);
     return {sx:isoX(wx,wy,wz)+OX, sy:isoY(wx,wy,wz)+OY}; }
 
-  /* -- Back cone (large flat face) of gear2 -- ellipse approximation -- */
+  /* -- Back cone (large flat face) of gear2 — ellipse approximation -- */
   /* The back cone of a bevel gear faces away from the apex */
   /* In our projection the back face of gear2 is at v = Rs (away from apex) */
   /* It's a circle of radius r2_back = Rs*sin(delta2) in the XZ plane at y=Rs*cos(delta2) */
@@ -18046,7 +18041,7 @@ function _vizBevel(svg, m, z1, z2, label, sigma) {
   /* Hub fill */
   h += '<polygon points="'+hb2pts.join(' ')+'" fill="'+c2f+'" fill-opacity="0.15"/>';
 
-  /* ── GEAR2 TEETH -- tapered trapezoids from cone surface ── */
+  /* ── GEAR2 TEETH — tapered trapezoids from cone surface ── */
   /* Each tooth is a trapezoid: outer face (at Rs) and inner face (at Rs_inner),
      with tooth height = add+ded, tapering toward apex.
      Drawn as filled polygons with edge stroke for 3D effect. */
@@ -18054,13 +18049,13 @@ function _vizBevel(svg, m, z1, z2, label, sigma) {
     var ang = t*2*PI/nTeeth2;
     var ht  = PI/(nTeeth2*1.6);  /* half-tooth angular width */
 
-    /* Outer (large) end corners -- at Rs */
+    /* Outer (large) end corners — at Rs */
     var oTipL = ellPt(r2_pitch + add*0.85, ang - ht*0.7, y2back);
     var oTipR = ellPt(r2_pitch + add*0.85, ang + ht*0.7, y2back);
     var oRootL= ellPt(r2_pitch - ded*0.85, ang - ht*1.0, y2back);
     var oRootR= ellPt(r2_pitch - ded*0.85, ang + ht*1.0, y2back);
 
-    /* Inner (small) end corners -- at Rs_inner (scaled by ratio) */
+    /* Inner (small) end corners — at Rs_inner (scaled by ratio) */
     var iTipL = ellPt((r2_pitch + add*0.6)*iScale, ang - ht*0.55, y2inner);
     var iTipR = ellPt((r2_pitch + add*0.6)*iScale, ang + ht*0.55, y2inner);
     var iRootL= ellPt((r2_pitch - ded*0.6)*iScale, ang - ht*0.75, y2inner);
@@ -18070,7 +18065,7 @@ function _vizBevel(svg, m, z1, z2, label, sigma) {
     var visible = (ang > PI*0.05 && ang < PI*1.5);
     if(!visible) continue;
 
-    /* Tooth face (top surface -- facing outward) */
+    /* Tooth face (top surface — facing outward) */
     var facePts = [oTipL,oTipR,iTipR,iTipL].map(function(q){return q.sx.toFixed(1)+','+q.sy.toFixed(1);}).join(' ');
     /* Shade based on angle for pseudo-3D */
     var shade = 0.08 + 0.12*Math.abs(sin(ang));
@@ -18116,7 +18111,7 @@ function _vizBevel(svg, m, z1, z2, label, sigma) {
   h += '<polygon points="'+shEnd2.join(' ')+'" fill="'+c2f+'" fill-opacity="0.22" stroke="'+c2f+'" stroke-width="0.9"/>';
 
   /* ───────────────────────────────────────────────
-     DRAW GEAR 1 -- Pinion (vertical axis)
+     DRAW GEAR 1 — Pinion (vertical axis)
   ─────────────────────────────────────────────── */
   var r1_pitch = Rs * sin(delta1);
   var r1_root  = (Rs - ded*cos(delta1)) * sin(delta1 - Math.atan(ded/Rs));
@@ -18159,7 +18154,7 @@ function _vizBevel(svg, m, z1, z2, label, sigma) {
     var iRootL1 = ellPt1((r1_pitch-ded*0.6)*iScl1, ang-ht*0.75, y1inner);
     var iRootR1 = ellPt1((r1_pitch-ded*0.6)*iScl1, ang+ht*0.75, y1inner);
 
-    /* Draw all teeth -- use angle-based depth-sort for visibility */
+    /* Draw all teeth — use angle-based depth-sort for visibility */
     /* Teeth facing "toward viewer" in isometric = upper-right quadrant */
     var s = sin(ang), c2 = cos(ang);
     var visible1 = !(s < -0.15 && c2 > -0.1);  /* hide teeth behind the disk */
@@ -18191,10 +18186,10 @@ function _vizBevel(svg, m, z1, z2, label, sigma) {
   /* ── PITCH CONE APEX indicator ── */
   var apexPt = {sx: OX+isoX(0,0,0), sy: OY+isoY(0,0,0)};
   /* Pitch cone axis lines (dashed) */
-  /* Gear2 axis -- horizontal +Y direction */
+  /* Gear2 axis — horizontal +Y direction */
   var axG2end = ellPt(0, 0, y2back + Rs*0.1);
   h += '<line x1="'+apexPt.sx.toFixed(1)+'" y1="'+apexPt.sy.toFixed(1)+'" x2="'+axG2end.sx.toFixed(1)+'" y2="'+axG2end.sy.toFixed(1)+'" stroke="'+c2f+'" stroke-width="0.7" stroke-dasharray="6,3" opacity="0.55"/>';
-  /* Gear1 axis -- vertical +Z direction */
+  /* Gear1 axis — vertical +Z direction */
   var axG1end = ellPt1(0,0,y1back+Rs*0.1);
   h += '<line x1="'+apexPt.sx.toFixed(1)+'" y1="'+apexPt.sy.toFixed(1)+'" x2="'+axG1end.sx.toFixed(1)+'" y2="'+axG1end.sy.toFixed(1)+'" stroke="'+c1f+'" stroke-width="0.7" stroke-dasharray="6,3" opacity="0.55"/>';
 
@@ -18231,7 +18226,7 @@ function _vizBevel(svg, m, z1, z2, label, sigma) {
     + label+' · m='+m+' · i='+iRatio.toFixed(2)+':1 · Rv='+(Rv).toFixed(1)+'mm'
     + '</text>';
 
-  /* Legend -- pitch/root circle key */
+  /* Legend — pitch/root circle key */
   var lx=-VW/2+10, ly=VH/2-28;
   h += '<line x1="'+lx+'" y1="'+ly+'" x2="'+(lx+14)+'" y2="'+ly+'" stroke="'+c2f+'" stroke-width="0.8" stroke-dasharray="5,2"/>';
   h += '<text x="'+(lx+17)+'" y="'+(ly+3)+'" '+fnt+' font-size="6.5" fill="'+cDim+'">Pitch cone</text>';
@@ -18266,7 +18261,7 @@ function _vizRatchet(svg,m,z){
   var px=rs*Math.cos(-Math.PI/4),py=rs*Math.sin(-Math.PI/4),pivx=rs*1.42*Math.cos(-Math.PI/4+0.6),pivy=rs*1.42*Math.sin(-Math.PI/4+0.6);
   h+='<polygon points="'+px.toFixed(1)+','+py.toFixed(1)+' '+(pivx-8).toFixed(1)+','+(pivy-5).toFixed(1)+' '+pivx.toFixed(1)+','+pivy.toFixed(1)+' '+(pivx+5).toFixed(1)+','+(pivy+8).toFixed(1)+'" fill="'+p.c4+'" fill-opacity="0.85" stroke="'+p.c4+'" stroke-width="1.4"/>';
   h+=_vC(pivx,pivy,5,p.c4,p.c4,1)+_vT(0,rs+22,'Ratchet Z='+z+' m='+m,p.c1,7)+_vT(pivx+14,pivy,'Pawl',p.c4,8,'start');
-  h+=_vT(0,-rs-14,'Ratchet & Pawl -- unidirectional',p.dim,7);
+  h+=_vT(0,-rs-14,'Ratchet & Pawl — unidirectional',p.dim,7);
   svg.innerHTML=h; svg.setAttribute('viewBox','-190 -160 380 320');
 }
 /* harmonic drive */
@@ -18308,7 +18303,7 @@ function _vizFaceGear(svg,m,zp,zf){
 }
 
 /* ══════════════════════════════════════════════════════════
-   FACE GEAR -- 5 Engineering Views
+   FACE GEAR — 5 Engineering Views
    Large flat ring gear (crown wheel) + small spur pinion at 90° shaft angle.
 ══════════════════════════════════════════════════════════ */
 function _mvFaceGear(m, zp, zf) {
@@ -18501,7 +18496,7 @@ function _mvFaceGear(m, zp, zf) {
 }
 
 /* ══════════════════════════════════════════════════════════
-   SCREW GEAR -- 5 Engineering Views
+   SCREW GEAR — 5 Engineering Views
    Two helical cylinders with crossing axes at general shaft angle Σ.
 ══════════════════════════════════════════════════════════ */
 function _mvScrewGear(mn, z1, z2, psi1, sigma) {
@@ -18676,7 +18671,7 @@ function _refreshCalcViz() {
   gpSet('calc-viz-badge-m', 'm');
   gpSet('calc-viz-badge-z', 'Z');
   gpSet('calc-viz-badge-type', label);
-  gpSet('calc-viz-label', label+' -- gear geometry diagram');
+  gpSet('calc-viz-label', label+' — gear geometry diagram');
 }
 
 function toggleCalcViz() {
@@ -18692,7 +18687,7 @@ function toggleCalcViz() {
 ══════════════════════════════════════════════════════════════ */
 
 /* ══════════════════════════════════════════════════════════════
-   UNIVERSAL CALC WRAPPER -- adds logging + viz refresh to every
+   UNIVERSAL CALC WRAPPER — adds logging + viz refresh to every
    gear calc function that isn't already patched
 ══════════════════════════════════════════════════════════════ */
 (function(){
@@ -18812,7 +18807,7 @@ function generateCalcReport() {
                  + tr2('Circular Pitch (p)', cpitch.toFixed(4)+' '+uL);
       formulaRows = '<div class="formula">d = m × Z | a = m(Z₁+Z₂)/2 | hₐ = 1.0·m | h_f = 1.25·m</div>'
                   + '<div class="formula">dₐ = d + 2·hₐ | d_f = d − 2·h_f | p = π·m | d_b = d·cos(α)</div>'
-                  + '<div class="formula">σ_b = Wt/(m·b·Y) -- Lewis Eq. | Y = 0.154 − 0.912/Z</div>';
+                  + '<div class="formula">σ_b = Wt/(m·b·Y) — Lewis Eq. | Y = 0.154 − 0.912/Z</div>';
       break;
     }
 
@@ -19158,7 +19153,7 @@ function generateCalcReport() {
                  + tr2('Addendum (= r)', cv(r).toFixed(4)+' '+uL) + tr2('Tooth Height', h.toFixed(4)+' '+uL)
                  + tr2('Face Width (B)', B.toFixed(4)+' '+uL);
       formulaRows = '<div class="formula">Cycloidal profile: addendum = r (rolling circle radius)</div>'
-                  + '<div class="formula">Centre distance critical -- no adjustable correction possible</div>';
+                  + '<div class="formula">Centre distance critical — no adjustable correction possible</div>';
       break;
     }
 
@@ -19176,9 +19171,9 @@ function generateCalcReport() {
       outputRows = tr2('Gear Ratio (i)', i.toFixed(1)+' : 1') + tr2('Output Speed (N₂)', N2.toFixed(2)+' RPM')
                  + tr2('Output Torque (T₂)', ct(T2).toFixed(3)+' '+tL)
                  + tr2('Circular Spline PCD', dc.toFixed(4)+' '+uL) + tr2('Flex Spline PCD', df.toFixed(4)+' '+uL)
-                 + tr2('Backlash', '0-3 arc-minutes') + tr2('Stiffness Limitation', 'Flex spline fatigue life');
+                 + tr2('Backlash', '0–3 arc-minutes') + tr2('Stiffness Limitation', 'Flex spline fatigue life');
       formulaRows = '<div class="formula">i = Zc/ΔZ | ΔZ must = 2 | Three-element: WG (input), FS (output), CS (fixed)</div>'
-                  + '<div class="formula">Unique zero-backlash -- wave generator deforms flex spline elliptically</div>';
+                  + '<div class="formula">Unique zero-backlash — wave generator deforms flex spline elliptically</div>';
       break;
     }
 
@@ -19262,7 +19257,7 @@ function generateCalcReport() {
   var unitLabel = (typeof GP_UNITS!=='undefined' && GP_UNITS==='IMP')
     ? 'Imperial Units (in · lbf·ft · hp)' : 'SI Units (mm · N·m · kW)';
 
-  var html = '<!DOCTYPE html><html><head><meta charset="UTF-8"><title>GearPedia Report -- '+gearTitle+' -- '+now+'</title>' +
+  var html = '<!DOCTYPE html><html><head><meta charset="UTF-8"><title>GearPedia Report — '+gearTitle+' — '+now+'</title>' +
     '<style>*{box-sizing:border-box}body{font-family:Consolas,monospace;background:#fff;color:#010230;margin:0;padding:36px;font-size:11.5px;line-height:1.65}' +
     'h1{font-size:22px;color:#011a5c;letter-spacing:-0.3px;margin:0 0 2px}' +
     '.sub{font-size:10px;color:#0061a0;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:20px}' +
@@ -19376,7 +19371,7 @@ function _mvSpur(m,z1,z2,gearType){
   gpEl('mv-front-svg').innerHTML=fr;
   _mvFillBackFromFront();
 
-  /* SIDE -- rectangle, hatching lines clipped to gear rect bounds */
+  /* SIDE — rectangle, hatching lines clipped to gear rect bounds */
   var W=bw, H=ra1*2;
   var W2=bw*(r2s/r1s), H2=ra2*2;
   var si='<defs>';
@@ -19420,7 +19415,7 @@ function _mvSpur(m,z1,z2,gearType){
   gpEl('mv-side-svg').setAttribute('viewBox','-100 -60 200 120');
   gpEl('mv-side-svg').innerHTML=si;
 
-  /* TOP -- clipped hatch lines inside gear rect */
+  /* TOP — clipped hatch lines inside gear rect */
   var W2b=bw*(r2s/r1s);
   var to='<defs>';
   to+='<clipPath id="mv-clip-t1"><rect x="'+(cx1-ra1).toFixed(2)+'" y="'+(-W/2).toFixed(2)+'" width="'+H.toFixed(2)+'" height="'+W.toFixed(2)+'"/></clipPath>';
@@ -19463,7 +19458,7 @@ function _mvSpur(m,z1,z2,gearType){
   gpEl('mv-top-svg').setAttribute('viewBox','-100 -60 200 120');
   gpEl('mv-top-svg').innerHTML=to;
 
-  /* BOTTOM -- same as Front but dashed hub bores more prominent, no tooth labels */
+  /* BOTTOM — same as Front but dashed hub bores more prominent, no tooth labels */
   var bo='<rect x="-100" y="-100" width="200" height="200" fill="'+bg+'" rx="5"/>';
   bo+=_mvL(-95,0,95,0,cl,0.5,'6,3',0.4)+_mvL(0,-95,0,95,cl,0.5,'6,3',0.4);
   bo+='<polygon points="'+_mvTeethPath(cx1,0,z1,ra1,r1s,rd1)+'" fill="'+c1+'" fill-opacity="0.1" stroke="'+c1+'" stroke-width="1.0" stroke-linejoin="round"/>';
@@ -19479,7 +19474,7 @@ function _mvSpur(m,z1,z2,gearType){
   gpEl('mv-bottom-svg').setAttribute('viewBox','-100 -100 200 200');
   gpEl('mv-bottom-svg').innerHTML=bo;
 
-  /* PERSPECTIVE -- isometric-style oblique projection */
+  /* PERSPECTIVE — isometric-style oblique projection */
   var pe='<rect x="-120" y="-120" width="240" height="240" fill="'+bg+'" rx="5"/>';
   var sk=-0.35; /* oblique skew */
   function _gearIso(cx,cy,ra,rp,rd,z,bw2,col,hubR){
@@ -19553,7 +19548,7 @@ function _mvGenericRefresh(m,z,r,ra,rd,hub,c,bw,label,sc){
   _mvSingleFront(gpEl('mv-front-svg'),fpts,ra,0,0,c,bg,cl,hub,label);
   /* Side */
   _mvSingleSideBox(gpEl('mv-side-svg'),0,ra,bw,c,bg,cl,z,m,sc);
-  /* Top -- clipped hatch lines */
+  /* Top — clipped hatch lines */
   var to='<defs><clipPath id="mv-clip-gtop"><rect x="'+(-ra).toFixed(2)+'" y="'+(-bw/2).toFixed(2)+'" width="'+(ra*2).toFixed(2)+'" height="'+bw.toFixed(2)+'"/></clipPath></defs>';
   to+='<rect x="-100" y="-60" width="200" height="120" fill="'+bg+'" rx="5"/>';
   to+=_mvRect(-ra,-bw/2,ra*2,bw,c,c,1,0.1);
@@ -19565,7 +19560,7 @@ function _mvGenericRefresh(m,z,r,ra,rd,hub,c,bw,label,sc){
   to+=_mvL(-1,-bw/2-2,-1,bw/2+2,c,0.45,'3,2',0.5)+_mvL(1,-bw/2-2,1,bw/2+2,c,0.45,'3,2',0.5);
   gpEl('mv-top-svg').setAttribute('viewBox','-100 -60 200 120');
   gpEl('mv-top-svg').innerHTML=to;
-  /* Back (mirrored front -- teeth same, hub shown as square keyway) */
+  /* Back (mirrored front — teeth same, hub shown as square keyway) */
   var bk='<rect x="-100" y="-100" width="200" height="200" fill="'+bg+'" rx="5"/>';
   bk+=_mvL(-95,0,95,0,cl,0.45,'6,3',0.4)+_mvL(0,-95,0,95,cl,0.45,'6,3',0.4);
   /* Mirror fpts horizontally for back view */
@@ -19619,7 +19614,7 @@ function _mvGenericRefresh(m,z,r,ra,rd,hub,c,bw,label,sc){
 ══════════════════════════════════════════════════════════ */
 
 /*
- * _mvBevelPair -- draws all 5 engineering views for a bevel gear pair.
+ * _mvBevelPair — draws all 5 engineering views for a bevel gear pair.
  * gearType: 'straightbevel' | 'spiralbevel' | 'miter' | 'zerol'
  * m  = module, z1 = pinion teeth, z2 = gear teeth
  * For miter: z1 == z2 (90° equal ratio), for others z2 >= z1.
@@ -19709,7 +19704,7 @@ function _mvBevelPair(m, z1, z2, gearType) {
     var addSc = add, dedSc = ded;
 
     if (isVertical) {
-      /* Pinion -- vertical shaft, cone apex at top, opens down */
+      /* Pinion — vertical shaft, cone apex at top, opens down */
       var apexX = ox, apexY = oy - R * Math.sin(delta2); /* apex at shaft axis */
       var bigEndY = oy + R * Math.cos(delta2) * 0.0; /* tip at bottom */
 
@@ -19729,7 +19724,7 @@ function _mvBevelPair(m, z1, z2, gearType) {
       var x_root_R = apexX + R * Math.sin(rootAngle);
       var y_root_R = apexY + R * Math.cos(rootAngle);
 
-      /* small-end (back face) -- fw along slant */
+      /* small-end (back face) — fw along slant */
       var fwFrac = fw / R;
       var xSL = apexX - (R - fw) * Math.sin(tipAngle);
       var ySL = apexY + (R - fw) * Math.cos(tipAngle);
@@ -19774,7 +19769,7 @@ function _mvBevelPair(m, z1, z2, gearType) {
       }
 
     } else {
-      /* Gear -- horizontal shaft, cone opens to the right */
+      /* Gear — horizontal shaft, cone opens to the right */
       var apexX2 = ox + R * Math.cos(delta1);
       var apexY2 = oy;
 
@@ -19843,7 +19838,7 @@ function _mvBevelPair(m, z1, z2, gearType) {
   var sc2 = Math.min(72 / gRTip, 1.0);
   var gRT = gRTip * sc2, gRP = gRPitch * sc2, gRR = gRRoot * sc2;
 
-  /* Pinion (smaller, upper right) -- shown axially */
+  /* Pinion (smaller, upper right) — shown axially */
   var pinCX = gearCX + gRT * 0.55, pinCY = gearCY - gRT * 0.55;
   var pRT = (rp1 + add) * sc2, pRP = rp1 * sc2, pRR = Math.max((rp1 - ded) * sc2, 3);
 
@@ -19865,14 +19860,14 @@ function _mvBevelPair(m, z1, z2, gearType) {
   _mvFillBackFromFront();
 
   /* ─── SIDE VIEW ─── */
-  /* Side: the classic "L" silhouette -- pinion vertical, gear horizontal, apex shared */
+  /* Side: the classic "L" silhouette — pinion vertical, gear horizontal, apex shared */
   var si = '<rect x="-100" y="-60" width="200" height="120" fill="'+bg+'" rx="5"/>';
   /* draw L-shape pair centered */
   /* apex at (0,0) for a 90° pair */
   var sR = Math.min(R * 0.8, 52);
   var sd1 = delta1, sd2 = delta2;
 
-  /* Pinion -- vertical cone pointing up, large face downward */
+  /* Pinion — vertical cone pointing up, large face downward */
   /* apex at center-ish, offset up so L fits */
   var apexSX = 8, apexSY = -sR * 0.1;
 
@@ -19892,7 +19887,7 @@ function _mvBevelPair(m, z1, z2, gearType) {
   var cpP = 'bvcp'+Math.floor(Math.random()*9999), cpG = 'bvcg'+Math.floor(Math.random()*9999);
   si  = '<defs>'
       + '<clipPath id="'+cpP+'"><polygon points="'+apexSX+','+apexSY.toFixed(1)+' '+pLE_LX.toFixed(1)+','+pLE_LY.toFixed(1)+' '+pRE_LX.toFixed(1)+','+pRE_LY.toFixed(1)+' '+pRE_RX.toFixed(1)+','+pRE_RY.toFixed(1)+' '+pLE_RX.toFixed(1)+','+pLE_RY.toFixed(1)+'"/></clipPath>'
-      + '<clipPath id="'+cpG+'"><polygon points="'+apexSX+','+apexSY.toFixed(1)+'"/></clipPath>'  /* placeholder -- filled after gear pts known */
+      + '<clipPath id="'+cpG+'"><polygon points="'+apexSX+','+apexSY.toFixed(1)+'"/></clipPath>'  /* placeholder — filled after gear pts known */
       + '</defs>'
       + si.slice(si.indexOf('<rect'));   /* keep the background rect already in si */
 
@@ -19903,7 +19898,7 @@ function _mvBevelPair(m, z1, z2, gearType) {
   /* shaft lines */
   si += '<line x1="'+apexSX+'" y1="'+(apexSY - 10).toFixed(1)+'" x2="'+apexSX+'" y2="'+apexSY.toFixed(1)+'" stroke="'+c1+'" stroke-width="1" opacity="0.55"/>';
   si += '<line x1="'+apexSX+'" y1="'+pRE_LY.toFixed(1)+'" x2="'+apexSX+'" y2="'+(pRE_LY + 10).toFixed(1)+'" stroke="'+c1+'" stroke-width="1" opacity="0.55"/>';
-  /* tooth serrations -- clipped to pinion polygon */
+  /* tooth serrations — clipped to pinion polygon */
   si += '<g clip-path="url(#'+cpP+')">';
   var nTsi = Math.min(z1, 10);
   for (var i = 0; i < nTsi; i++) {
@@ -19923,7 +19918,7 @@ function _mvBevelPair(m, z1, z2, gearType) {
   }
   si += '</g>';
 
-  /* Gear -- horizontal cone opening left, apex same point */
+  /* Gear — horizontal cone opening left, apex same point */
   var gTipAngle = sd2 + Math.atan(add * sc / sR);
   var gRootAngle = sd2 - Math.atan(ded * sc / sR);
   var gLE_TX = apexSX - sR * Math.cos(gTipAngle), gLE_TY = apexSY - sR * Math.sin(gTipAngle);
@@ -19942,7 +19937,7 @@ function _mvBevelPair(m, z1, z2, gearType) {
   si += '<line x1="'+gSE_TX.toFixed(1)+'" y1="'+gSE_TY.toFixed(1)+'" x2="'+gSE_BX.toFixed(1)+'" y2="'+gSE_BY.toFixed(1)+'" stroke="'+c2+'" stroke-width="0.7" stroke-dasharray="3,2" opacity="0.5"/>';
   si += '<line x1="'+(apexSX + 10).toFixed(1)+'" y1="'+apexSY.toFixed(1)+'" x2="'+apexSX.toFixed(1)+'" y2="'+apexSY.toFixed(1)+'" stroke="'+c2+'" stroke-width="1" opacity="0.55"/>';
   si += '<line x1="'+gRE_TX.toFixed(1)+'" y1="'+apexSY.toFixed(1)+'" x2="'+(gRE_TX - 10).toFixed(1)+'" y2="'+apexSY.toFixed(1)+'" stroke="'+c2+'" stroke-width="1" opacity="0.55"/>';
-  /* gear teeth serrations -- clipped to gear polygon */
+  /* gear teeth serrations — clipped to gear polygon */
   si += '<g clip-path="url(#'+cpG+')">';
   var nTgi = Math.min(z2, 10);
   for (var i = 0; i < nTgi; i++) {
@@ -19965,7 +19960,7 @@ function _mvBevelPair(m, z1, z2, gearType) {
   gpEl('mv-side-svg').innerHTML = si;
 
   /* ─── TOP VIEW ─── */
-  /* Top: looking down -- pinion shows as rectangle (face width × shaft), gear as large circles */
+  /* Top: looking down — pinion shows as rectangle (face width × shaft), gear as large circles */
   var to = '<rect x="-100" y="-60" width="200" height="120" fill="'+bg+'" rx="5"/>';
   to += _mvL(-95,0,95,0,cl,0.4,'5,3',0.35);
 
@@ -19974,7 +19969,7 @@ function _mvBevelPair(m, z1, z2, gearType) {
   var tadd = add * sc3 * 0.7, tded = ded * sc3 * 0.7;
   var tfw = fw * sc3 * 0.7;
 
-  /* Gear (large) -- circles from above */
+  /* Gear (large) — circles from above */
   var gCX_t = -tr2 * 0.2, gCY_t = 0;
   to += '<circle cx="'+gCX_t.toFixed(1)+'" cy="'+gCY_t.toFixed(1)+'" r="'+(tr2 + tadd).toFixed(1)+'" fill="'+c2+'" fill-opacity="0.1" stroke="'+c2+'" stroke-width="1.1"/>';
   to += '<circle cx="'+gCX_t.toFixed(1)+'" cy="'+gCY_t.toFixed(1)+'" r="'+tr2.toFixed(1)+'" fill="none" stroke="'+c2+'" stroke-width="0.7" stroke-dasharray="4,2" opacity="0.55"/>';
@@ -19982,7 +19977,7 @@ function _mvBevelPair(m, z1, z2, gearType) {
   var hubT2 = Math.max((tr2-tded)*0.3, 3);
   to += '<circle cx="'+gCX_t.toFixed(1)+'" cy="'+gCY_t.toFixed(1)+'" r="'+hubT2.toFixed(1)+'" fill="'+bg+'" stroke="'+c2+'" stroke-width="0.8"/>';
 
-  /* Pinion -- rectangle width=2*(r1+add), height=fw (face width) */
+  /* Pinion — rectangle width=2*(r1+add), height=fw (face width) */
   var pW = (tr1 + tadd) * 2, pH = tfw * 1.3;
   var pCX_t = gCX_t + tr2 + tadd + pW * 0.05;
   if (pCX_t + pW / 2 > 88) pCX_t = 88 - pW / 2;
@@ -20023,11 +20018,11 @@ function _mvBevelPair(m, z1, z2, gearType) {
   gpEl('mv-top-svg').innerHTML = to;
 
   /* ─── BOTTOM VIEW ─── */
-  /* Bottom: same as top but slight difference -- gear circle + pinion from below */
+  /* Bottom: same as top but slight difference — gear circle + pinion from below */
   var bo = '<rect x="-100" y="-60" width="200" height="120" fill="'+bg+'" rx="5"/>';
   bo += _mvL(-95,0,95,0,cl,0.4,'5,3',0.35);
 
-  /* Gear circles -- from below (same geometry, slightly different hatch) */
+  /* Gear circles — from below (same geometry, slightly different hatch) */
   bo += '<circle cx="'+gCX_t.toFixed(1)+'" cy="'+gCY_t.toFixed(1)+'" r="'+(tr2 + tadd).toFixed(1)+'" fill="'+c2+'" fill-opacity="0.09" stroke="'+c2+'" stroke-width="1.0"/>';
   bo += '<circle cx="'+gCX_t.toFixed(1)+'" cy="'+gCY_t.toFixed(1)+'" r="'+tr2.toFixed(1)+'" fill="none" stroke="'+c2+'" stroke-width="0.65" stroke-dasharray="4,2" opacity="0.5"/>';
   bo += '<circle cx="'+gCX_t.toFixed(1)+'" cy="'+gCY_t.toFixed(1)+'" r="'+(tr2-tded).toFixed(1)+'" fill="none" stroke="'+c2+'" stroke-width="0.5" stroke-dasharray="2,2" opacity="0.35"/>';
@@ -20115,10 +20110,10 @@ function _mvBevelPair(m, z1, z2, gearType) {
     return h;
   }
 
-  /* Gear -- large, lower-center */
+  /* Gear — large, lower-center */
   pe += _bevelIsoGear(gIsoX, gIsoY, pr2, pr2pit, pr2root, z2, c2, pfw2, 1);
 
-  /* Pinion -- small, upper-right, rotated 90° (appear taller/thinner) */
+  /* Pinion — small, upper-right, rotated 90° (appear taller/thinner) */
   var pIsoX = gIsoX + pr2 * 0.5, pIsoY = gIsoY - pr2 * 0.72;
   /* pinion in isometric appears as tall ellipse (perpendicular axis) */
   function _bevelIsoPinion(cx, cy, rTip, rPit, rRoot, nT, col, faceWidth) {
@@ -20164,7 +20159,7 @@ function _mvBevelPair(m, z1, z2, gearType) {
 }
 
 /* ══════════════════════════════════════════════════════════
-   WORM GEAR -- 5 Engineering Views
+   WORM GEAR — 5 Engineering Views
    Worm (cylinder with helical thread) + Wheel (large gear, hourglass profile)
    Shaft axes at 90°, offset = 0 for standard worm.
 ══════════════════════════════════════════════════════════ */
@@ -20187,7 +20182,7 @@ function _mvWormGear(m, zw, q, zStarts) {
   function _wormBody(x, y, r, ra, rd, L, nT, col, vertical) {
     var h = '';
     if (vertical) {
-      /* Worm vertical (side view) -- cylinder rectangle */
+      /* Worm vertical (side view) — cylinder rectangle */
       h += '<rect x="'+(x-ra).toFixed(1)+'" y="'+(y-L).toFixed(1)+'" width="'+(ra*2).toFixed(1)+'" height="'+(L*2).toFixed(1)+'" fill="'+col+'" fill-opacity="0.1" stroke="'+col+'" stroke-width="1.0" rx="3"/>';
       /* root cylinder */
       h += '<rect x="'+(x-rd).toFixed(1)+'" y="'+(y-L).toFixed(1)+'" width="'+(rd*2).toFixed(1)+'" height="'+(L*2).toFixed(1)+'" fill="'+col+'" fill-opacity="0.07" stroke="'+col+'" stroke-width="0.6" stroke-dasharray="3,2" rx="2"/>';
@@ -20203,7 +20198,7 @@ function _mvWormGear(m, zw, q, zStarts) {
       h += '<line x1="'+x.toFixed(1)+'" y1="'+(y-L-8).toFixed(1)+'" x2="'+x.toFixed(1)+'" y2="'+(y-L).toFixed(1)+'" stroke="'+col+'" stroke-width="1.1" opacity="0.6"/>';
       h += '<line x1="'+x.toFixed(1)+'" y1="'+(y+L).toFixed(1)+'" x2="'+x.toFixed(1)+'" y2="'+(y+L+8).toFixed(1)+'" stroke="'+col+'" stroke-width="1.1" opacity="0.6"/>';
     } else {
-      /* Worm horizontal (front/top view) -- cylinder rectangle */
+      /* Worm horizontal (front/top view) — cylinder rectangle */
       h += '<rect x="'+(x-L).toFixed(1)+'" y="'+(y-ra).toFixed(1)+'" width="'+(L*2).toFixed(1)+'" height="'+(ra*2).toFixed(1)+'" fill="'+col+'" fill-opacity="0.1" stroke="'+col+'" stroke-width="1.0" rx="3"/>';
       h += '<rect x="'+(x-L).toFixed(1)+'" y="'+(y-rd).toFixed(1)+'" width="'+(L*2).toFixed(1)+'" height="'+(rd*2).toFixed(1)+'" fill="'+col+'" fill-opacity="0.06" stroke="'+col+'" stroke-width="0.55" stroke-dasharray="3,2" rx="2"/>';
       /* helical thread lines */
@@ -20242,7 +20237,7 @@ function _mvWormGear(m, zw, q, zStarts) {
   var fr = '<rect x="-100" y="-100" width="200" height="200" fill="'+bg+'" rx="5"/>';
   fr += _mvL(-95,0,95,0,cl,0.38,'6,3',0.33) + _mvL(0,-95,0,95,cl,0.38,'6,3',0.33);
   fr += _wheelFace(wCX, wCY, ra2*sc2, r2*sc2, rd2*sc2, zw, c2);
-  /* worm passes through/behind wheel center horizontally -- show as rectangle strip */
+  /* worm passes through/behind wheel center horizontally — show as rectangle strip */
   var wR2 = ra1*sc2*0.75;
   fr += '<rect x="'+(wCX-wL).toFixed(1)+'" y="'+(wCY-wR2).toFixed(1)+'" width="'+(wL*2).toFixed(1)+'" height="'+(wR2*2).toFixed(1)+'" fill="'+c1+'" fill-opacity="0.08" stroke="'+c1+'" stroke-width="0.9" rx="3"/>';
   /* helical lines on worm strip */
@@ -20276,7 +20271,7 @@ function _mvWormGear(m, zw, q, zStarts) {
   si += '<line x1="'+wX_s.toFixed(1)+'" y1="'+(wY_s+wHalfH).toFixed(1)+'" x2="'+wX_s.toFixed(1)+'" y2="'+(wY_s+wHalfH+7).toFixed(1)+'" stroke="'+c1+'" stroke-width="1.0" opacity="0.6"/>';
   /* hub ring at top (circle view of worm bore) */
   si += '<circle cx="'+wX_s.toFixed(1)+'" cy="'+(wY_s-wHalfH-4).toFixed(1)+'" r="'+(wRad_s*0.35).toFixed(1)+'" fill="none" stroke="'+c1+'" stroke-width="0.8" stroke-dasharray="3,2" opacity="0.6"/>';
-  /* Wheel -- seen from side = narrow rectangle (face width) + hub */
+  /* Wheel — seen from side = narrow rectangle (face width) + hub */
   var wW_s = Math.min(ra2*0.38, 28), wH_s = Math.min(ra2*0.9, 50);
   var wWX = wX_s, wWY = 18;
   si += '<rect x="'+(wWX-wW_s/2).toFixed(1)+'" y="'+(wWY-wH_s/2).toFixed(1)+'" width="'+wW_s.toFixed(1)+'" height="'+wH_s.toFixed(1)+'" fill="'+c2+'" fill-opacity="0.12" stroke="'+c2+'" stroke-width="1.0" rx="2"/>';
@@ -20317,7 +20312,7 @@ function _mvWormGear(m, zw, q, zStarts) {
   /* worm shaft */
   to += '<line x1="'+(wCX_t-wormL_t-8).toFixed(1)+'" y1="'+wWormY_t.toFixed(1)+'" x2="'+(wCX_t-wormL_t).toFixed(1)+'" y2="'+wWormY_t.toFixed(1)+'" stroke="'+c1+'" stroke-width="1.0" opacity="0.6"/>';
   to += '<line x1="'+(wCX_t+wormL_t).toFixed(1)+'" y1="'+wWormY_t.toFixed(1)+'" x2="'+(wCX_t+wormL_t+8).toFixed(1)+'" y2="'+wWormY_t.toFixed(1)+'" stroke="'+c1+'" stroke-width="1.0" opacity="0.6"/>';
-  /* Wheel top view -- circle */
+  /* Wheel top view — circle */
   to += '<circle cx="'+wCX_t.toFixed(1)+'" cy="'+wWheelY_t.toFixed(1)+'" r="'+wr2t.toFixed(1)+'" fill="'+c2+'" fill-opacity="0.1" stroke="'+c2+'" stroke-width="1.0"/>';
   to += '<circle cx="'+wCX_t.toFixed(1)+'" cy="'+wWheelY_t.toFixed(1)+'" r="'+wr2tp.toFixed(1)+'" fill="none" stroke="'+c2+'" stroke-width="0.6" stroke-dasharray="4,2" opacity="0.5"/>';
   to += '<circle cx="'+wCX_t.toFixed(1)+'" cy="'+wWheelY_t.toFixed(1)+'" r="'+wr2rd.toFixed(1)+'" fill="none" stroke="'+c2+'" stroke-width="0.45" stroke-dasharray="2,2" opacity="0.35"/>';
@@ -20358,7 +20353,7 @@ function _mvWormGear(m, zw, q, zStarts) {
   var pr1i = ra1*sc4*0.7;
   var wL_i = Math.min(L1*sc4*0.8, 55);
 
-  /* Wheel -- large gear, isometric foreshortened ellipse, lower-left */
+  /* Wheel — large gear, isometric foreshortened ellipse, lower-left */
   var wGX = -15, wGY = 25;
   /* tooth polygon */
   var nWI = Math.min(zw, 32);
@@ -20385,7 +20380,7 @@ function _mvWormGear(m, zw, q, zStarts) {
   var hubI = Math.max(pr2ird*0.3, 4);
   pe += '<ellipse cx="'+wGX.toFixed(1)+'" cy="'+wGY.toFixed(1)+'" rx="'+hubI.toFixed(1)+'" ry="'+(hubI*0.4).toFixed(1)+'" fill="'+bg+'" stroke="'+c2+'" stroke-width="0.85"/>';
 
-  /* Worm -- cylindrical shape, angled upper-right */
+  /* Worm — cylindrical shape, angled upper-right */
   var wSX = wGX + pr2i*0.22, wSY = wGY - pr2i*0.75;
   var wR_i = Math.min(pr1i, 16), wLH = Math.min(wL_i, 50);
   /* worm body as skewed rectangle */
@@ -20414,7 +20409,7 @@ function _mvWormGear(m, zw, q, zStarts) {
 }
 
 /* ══════════════════════════════════════════════════════════
-   HYPOID GEAR -- 5 Engineering Views
+   HYPOID GEAR — 5 Engineering Views
    Like bevel but with offset between axes (E > 0).
    Pinion is small with spiral teeth, ring gear is large.
 ══════════════════════════════════════════════════════════ */
@@ -20491,7 +20486,7 @@ function _mvHypoidGear(m, z1, z2, E) {
     var fx = pLX+(pRX-pLX)*i/nSP, fy = pLY+(pRY-pLY)*i/nSP;
     si += '<line x1="'+fx.toFixed(1)+'" y1="'+fy.toFixed(1)+'" x2="'+(fx+2.5).toFixed(1)+'" y2="'+(fy-2).toFixed(1)+'" stroke="'+c1+'" stroke-width="0.7" opacity="0.55"/>';
   }
-  /* Ring gear (gear cone) leftward -- with offset apexX → apexX+Esc */
+  /* Ring gear (gear cone) leftward — with offset apexX → apexX+Esc */
   var gAX = apexX + Esc*0.5;
   var gTA = delta2 + Math.atan(m*sc/sR);
   var gRA = delta2 - Math.atan(1.25*m*sc/sR);
@@ -20521,7 +20516,7 @@ function _mvHypoidGear(m, z1, z2, E) {
   to += '<circle cx="'+gCXT.toFixed(1)+'" cy="'+gCYT.toFixed(1)+'" r="'+gRRt.toFixed(1)+'" fill="none" stroke="'+c2+'" stroke-width="0.45" stroke-dasharray="2,2" opacity="0.35"/>';
   var hbT = Math.max(gRRt*0.28, 3);
   to += '<circle cx="'+gCXT.toFixed(1)+'" cy="'+gCYT.toFixed(1)+'" r="'+hbT.toFixed(1)+'" fill="'+bg+'" stroke="'+c2+'" stroke-width="0.8"/>';
-  /* Pinion -- offset rectangle at top */
+  /* Pinion — offset rectangle at top */
   var pCXT = gCXT + Esc*sc3, pCYT = -28;
   var pWT = (ra1*sc3)*2*0.9, pHT = fw1*sc3*0.8;
   to += '<rect x="'+(pCXT-pWT/2).toFixed(1)+'" y="'+(pCYT-pHT/2).toFixed(1)+'" width="'+pWT.toFixed(1)+'" height="'+pHT.toFixed(1)+'" fill="'+c1+'" fill-opacity="0.12" stroke="'+c1+'" stroke-width="1.0" rx="2"/>';
@@ -20581,7 +20576,7 @@ function _mvHypoidGear(m, z1, z2, E) {
   pe += '<ellipse cx="'+(gIX-gRi*0.32).toFixed(1)+'" cy="'+(gIY-gRi*0.17).toFixed(1)+'" rx="'+gRi.toFixed(1)+'" ry="'+(gRi*0.4).toFixed(1)+'" fill="'+c2+'" fill-opacity="0.05" stroke="'+c2+'" stroke-width="0.6" opacity="0.38"/>';
   var hubIH = Math.max(gRird*0.3,4);
   pe += '<ellipse cx="'+gIX.toFixed(1)+'" cy="'+gIY.toFixed(1)+'" rx="'+hubIH.toFixed(1)+'" ry="'+(hubIH*0.4).toFixed(1)+'" fill="'+bg+'" stroke="'+c2+'" stroke-width="0.85"/>';
-  /* Pinion -- small spiral pinion upper right, offset */
+  /* Pinion — small spiral pinion upper right, offset */
   var pIX = gIX + gRi*0.42 + Esc*sc4*0.5, pIY = gIY - gRi*0.7;
   var pRi = ra1*sc4*0.8, pRip = rp1*sc4*0.8, pRird = rd1*sc4*0.8;
   var nPI = Math.min(z1,16);
@@ -20606,7 +20601,7 @@ function _mvHypoidGear(m, z1, z2, E) {
 }
 
 /* ══════════════════════════════════════════════════════════
-   CROSSED HELICAL GEAR -- 5 Engineering Views
+   CROSSED HELICAL GEAR — 5 Engineering Views
    Two helical cylinders with crossing (typically 90°) axes.
    Both gears look like helical spur gears from front, but
    shaft axes are perpendicular in space.
@@ -20629,7 +20624,7 @@ function _mvCrossedHelical(mn, z1, z2, psi1) {
     var h = '';
     var ang = helixAng * Math.PI/180;
     if (!vertical) {
-      /* horizontal shaft -- rectangle */
+      /* horizontal shaft — rectangle */
       h += '<rect x="'+(cx-fw/2).toFixed(1)+'" y="'+(cy-ra).toFixed(1)+'" width="'+fw.toFixed(1)+'" height="'+(ra*2).toFixed(1)+'" fill="'+col+'" fill-opacity="0.11" stroke="'+col+'" stroke-width="1.0" rx="2"/>';
       h += '<rect x="'+(cx-fw/2).toFixed(1)+'" y="'+(cy-rd).toFixed(1)+'" width="'+fw.toFixed(1)+'" height="'+(rd*2).toFixed(1)+'" fill="'+col+'" fill-opacity="0.06" stroke="'+col+'" stroke-width="0.5" stroke-dasharray="3,2" rx="2"/>';
       /* helical tooth lines */
@@ -20643,7 +20638,7 @@ function _mvCrossedHelical(mn, z1, z2, psi1) {
       h += '<line x1="'+(cx-fw/2-8).toFixed(1)+'" y1="'+cy.toFixed(1)+'" x2="'+(cx-fw/2).toFixed(1)+'" y2="'+cy.toFixed(1)+'" stroke="'+col+'" stroke-width="1.1" opacity="0.6"/>';
       h += '<line x1="'+(cx+fw/2).toFixed(1)+'" y1="'+cy.toFixed(1)+'" x2="'+(cx+fw/2+8).toFixed(1)+'" y2="'+cy.toFixed(1)+'" stroke="'+col+'" stroke-width="1.1" opacity="0.6"/>';
     } else {
-      /* vertical shaft -- rectangle taller than wide */
+      /* vertical shaft — rectangle taller than wide */
       h += '<rect x="'+(cx-ra).toFixed(1)+'" y="'+(cy-fw/2).toFixed(1)+'" width="'+(ra*2).toFixed(1)+'" height="'+fw.toFixed(1)+'" fill="'+col+'" fill-opacity="0.11" stroke="'+col+'" stroke-width="1.0" rx="2"/>';
       h += '<rect x="'+(cx-rd).toFixed(1)+'" y="'+(cy-fw/2).toFixed(1)+'" width="'+(rd*2).toFixed(1)+'" height="'+fw.toFixed(1)+'" fill="'+col+'" fill-opacity="0.06" stroke="'+col+'" stroke-width="0.5" stroke-dasharray="3,2" rx="2"/>';
       var nL2 = Math.min(nT,14);
@@ -20661,9 +20656,9 @@ function _mvCrossedHelical(mn, z1, z2, psi1) {
   /* ── FRONT: Gear 1 horizontal, Gear 2 vertical, intersecting ── */
   var fr = '<rect x="-100" y="-100" width="200" height="200" fill="'+bg+'" rx="5"/>';
   fr += _mvL(-95,0,95,0,cl,0.38,'6,3',0.33) + _mvL(0,-95,0,95,cl,0.38,'6,3',0.33);
-  /* Gear 1 -- horizontal cylinder */
+  /* Gear 1 — horizontal cylinder */
   fr += _helixCyl(0, 20, ra1, rd1, fw1, z1, c1, helix1, false);
-  /* Gear 2 -- vertical cylinder crossing */
+  /* Gear 2 — vertical cylinder crossing */
   fr += _helixCyl(0, -20, ra2, rd2, fw2, z2, c2, helix2, true);
   fr += _mvL(0-ra1-8, 20, ra1+8, 20, c1, 0.33,'5,3',0.3);
   fr += _mvL(0, -20-ra2-8, 0, -20+ra2+8, c2, 0.33,'5,3',0.3);
@@ -20685,7 +20680,7 @@ function _mvCrossedHelical(mn, z1, z2, psi1) {
   si += _mvL(g1SX, g1SY-ra1-6, g1SX, g1SY+ra1+6, c1, 0.33,'5,3',0.3);
   /* shaft (into page = dot) */
   si += '<circle cx="'+g1SX.toFixed(1)+'" cy="'+g1SY.toFixed(1)+'" r="2" fill="'+c1+'" opacity="0.8"/>';
-  /* Gear 2 -- side view rectangle */
+  /* Gear 2 — side view rectangle */
   var g2SY = 20;
   si += _helixCyl(0, g2SY, ra2, rd2, fw2, z2, c2, helix2, false);
   gpEl('mv-side-svg').setAttribute('viewBox', '-100 -60 200 120');
@@ -20734,7 +20729,7 @@ function _mvCrossedHelical(mn, z1, z2, psi1) {
   var r1i = ra1*sc4, r1ip = rp1*sc4, r1ird = rd1*sc4, fw1i = fw1*sc4;
   var r2i = ra2*sc4, r2ip = rp2*sc4, r2ird = rd2*sc4, fw2i = fw2*sc4;
 
-  /* Gear 1 -- horizontal, lower-left in isometric */
+  /* Gear 1 — horizontal, lower-left in isometric */
   var g1IX = -r1i*0.3, g1IY = 25;
   pe += '<rect x="'+(g1IX-fw1i/2).toFixed(1)+'" y="'+(g1IY-r1i).toFixed(1)+'" width="'+fw1i.toFixed(1)+'" height="'+(r1i*2).toFixed(1)+'" fill="'+c1+'" fill-opacity="0.12" stroke="'+c1+'" stroke-width="1.0" rx="3"/>';
   pe += '<rect x="'+(g1IX-fw1i/2).toFixed(1)+'" y="'+(g1IY-r1ird).toFixed(1)+'" width="'+fw1i.toFixed(1)+'" height="'+(r1ird*2).toFixed(1)+'" fill="'+c1+'" fill-opacity="0.06" stroke="'+c1+'" stroke-width="0.5" stroke-dasharray="3,2" rx="2"/>';
@@ -20746,7 +20741,7 @@ function _mvCrossedHelical(mn, z1, z2, psi1) {
   pe += '<line x1="'+(g1IX-fw1i/2-8).toFixed(1)+'" y1="'+g1IY.toFixed(1)+'" x2="'+(g1IX-fw1i/2).toFixed(1)+'" y2="'+g1IY.toFixed(1)+'" stroke="'+c1+'" stroke-width="1.0" opacity="0.6"/>';
   pe += '<line x1="'+(g1IX+fw1i/2).toFixed(1)+'" y1="'+g1IY.toFixed(1)+'" x2="'+(g1IX+fw1i/2+8).toFixed(1)+'" y2="'+g1IY.toFixed(1)+'" stroke="'+c1+'" stroke-width="1.0" opacity="0.6"/>';
 
-  /* Gear 2 -- vertical, upper-right in isometric (foreshortened) */
+  /* Gear 2 — vertical, upper-right in isometric (foreshortened) */
   var g2IX = g1IX + r1i*0.4, g2IY = g1IY - r2i*1.1;
   pe += '<rect x="'+(g2IX-r2i).toFixed(1)+'" y="'+(g2IY-fw2i/2).toFixed(1)+'" width="'+(r2i*2).toFixed(1)+'" height="'+fw2i.toFixed(1)+'" fill="'+c2+'" fill-opacity="0.12" stroke="'+c2+'" stroke-width="1.0" rx="3"/>';
   pe += '<rect x="'+(g2IX-r2ird).toFixed(1)+'" y="'+(g2IY-fw2i/2).toFixed(1)+'" width="'+(r2ird*2).toFixed(1)+'" height="'+fw2i.toFixed(1)+'" fill="'+c2+'" fill-opacity="0.06" stroke="'+c2+'" stroke-width="0.5" stroke-dasharray="3,2" rx="2"/>';
@@ -20763,7 +20758,7 @@ function _mvCrossedHelical(mn, z1, z2, psi1) {
 }
 
 /* ══════════════════════════════════════════════════════════
-   SPIROID GEAR -- 5 Engineering Views
+   SPIROID GEAR — 5 Engineering Views
    Tapered worm (spiroid worm) + face gear / ring gear.
    The worm is conical (tapered), meshing with a flat face gear.
 ══════════════════════════════════════════════════════════ */
@@ -20903,7 +20898,7 @@ function _mvSpiroidGear(m, zFace, nStarts, lambda) {
   var sc4 = Math.min(55/rF, 1.4);
   var gFI = rF*sc4, gFIp = rFp*sc4, gFIr = rFr*sc4;
   var gIX = -5, gIY = 30;
-  /* Face gear -- isometric ellipse with teeth */
+  /* Face gear — isometric ellipse with teeth */
   var nFI = Math.min(zFace,30);
   var fIPts = [];
   for (var i=0;i<nFI;i++){
@@ -20920,7 +20915,7 @@ function _mvSpiroidGear(m, zFace, nStarts, lambda) {
   pe += '<ellipse cx="'+(gIX-gFI*0.3).toFixed(1)+'" cy="'+(gIY-gFI*0.16).toFixed(1)+'" rx="'+gFI.toFixed(1)+'" ry="'+(gFI*0.4).toFixed(1)+'" fill="'+c2+'" fill-opacity="0.04" stroke="'+c2+'" stroke-width="0.55" opacity="0.35"/>';
   var hbFI = Math.max(gFIr*0.3,4);
   pe += '<ellipse cx="'+gIX.toFixed(1)+'" cy="'+gIY.toFixed(1)+'" rx="'+hbFI.toFixed(1)+'" ry="'+(hbFI*0.4).toFixed(1)+'" fill="'+bg+'" stroke="'+c2+'" stroke-width="0.8"/>';
-  /* Spiroid worm -- tapered cylinder, upper right */
+  /* Spiroid worm — tapered cylinder, upper right */
   var wIX1 = gIX + gFI*0.45, wIY1 = gIY - gFI*0.85;
   var wIX2 = gIX + gFI*0.22, wIY2 = gIY - gFI*0.15;
   var wIRt = coneTip*sc4*0.7, wIRb = coneBase*sc4*0.7;
@@ -20975,21 +20970,21 @@ function _refreshMultiView(){
     case 'spur':        _mvSpur(rn('sp-m',2),ri('sp-z1',20),ri('sp-z2',40),'spur'); break;
     case 'helical':     _mvSpur(rn('he-mn',2),ri('he-z1',20),ri('he-z2',40),'helical'); break;
     case 'herringbone': _mvSpur(rn('hb-mn',2),ri('hb-z1',20),ri('hb-z2',40),'herringbone'); break;
-    /* ── Bevel family -- proper engineering views ── */
+    /* ── Bevel family — proper engineering views ── */
     case 'straightbevel': _mvBevelPair(rn('sb-m',2), ri('sb-z1',20), ri('sb-z2',40), 'straightbevel'); break;
     case 'spiralbevel':   _mvBevelPair(rn('sp2-m',3), ri('sp2-z1',20), ri('sp2-z2',40), 'spiralbevel'); break;
     case 'miter':         _mvBevelPair(rn('mi-m',2), ri('mi-z',20), ri('mi-z',20), 'miter'); break;
     case 'zerol':         _mvBevelPair(rn('ze-m',3), ri('ze-z1',20), ri('ze-z2',40), 'zerol'); break;
-    /* ── Worm family -- proper engineering views ── */
+    /* ── Worm family — proper engineering views ── */
     case 'worm':          _mvWormGear(rn('wo-m',3), ri('wo-zw',40), rn('wo-q',17), parseInt((document.getElementById('wo-z1')||{value:'1'}).value)||1); break;
     case 'hypoid':        _mvHypoidGear(rn('hy-m',3), ri('hy-z1',6), ri('hy-z2',37), rn('hy-E',20)); break;
     case 'crossedhelical':_mvCrossedHelical(rn('ch-mn',2), ri('ch-z1',20), ri('ch-z2',30), rn('ch-psi1',45)); break;
     case 'spiroid':       _mvSpiroidGear(rn('sr-m',2), ri('sr-z',60), parseInt((document.getElementById('sr-n')||{value:'1'}).value)||1, rn('sr-lam',20)); break;
-    /* ── Linear / Face / Screw family -- proper engineering views ── */
+    /* ── Linear / Face / Screw family — proper engineering views ── */
     case 'rack':          _mvRackPinion(rn('rp-m',2), ri('rp-z',18), parseFloat((document.getElementById('rp-pa')||{value:'20'}).value)||20); break;
     case 'facegear':      _mvFaceGear(rn('fg-m',3), ri('fg-zp',16), ri('fg-zf',64)); break;
     case 'screwgear':     _mvScrewGear(rn('sg-mn',2), ri('sg-z1',15), ri('sg-z2',30), rn('sg-psi1',30), rn('sg-sigma',90)); break;
-    /* ── Ring gear family -- dedicated views ── */
+    /* ── Ring gear family — dedicated views ── */
     case 'internal':      _mvInternalGear(); break;
     case 'planetary':     _mvPlanetaryGear(); break;
     default:{
@@ -21019,7 +21014,7 @@ function _refreshMultiView(){
 }
 
 /* ═══════════════════════════════════════════════════════════════════
-   INTERNAL GEAR -- All 6 Engineering Views
+   INTERNAL GEAR — All 6 Engineering Views
    Reference: annular ring with internal teeth, flat wide rim profile
 ═══════════════════════════════════════════════════════════════════ */
 function _mvInternalGear(m, zp, zr) {
@@ -21042,7 +21037,7 @@ function _mvInternalGear(m, zp, zr) {
   var rPA = (rPinion+m)*sc, rPP = rPinion*sc, rPD = Math.max((rPinion-1.25*m)*sc,1.5);
   var BW  = bw*sc, HUBR = rPP*0.35;
 
-  /* Internal teeth path -- body→pitch→tip→pitch→body per tooth */
+  /* Internal teeth path — body→pitch→tip→pitch→body per tooth */
   function igTeeth(cx,cy,zCount,rTip,rPitch,rBody){
     var step=2*Math.PI/zCount, ht=Math.PI/(2.8*zCount), pts=[];
     for(var i=0;i<zCount;i++){
@@ -21063,7 +21058,7 @@ function _mvInternalGear(m, zp, zr) {
     + _mvL(vb[0]+5, 0, vb[0]+vb[2]-5, 0, cl, 0.4,'5,3',0.35)
     + _mvL(0, vb[1]+5, 0, vb[1]+vb[3]-5, cl, 0.4,'5,3',0.35); }
 
-  /* FRONT -- ring with internal teeth + pinion inside */
+  /* FRONT — ring with internal teeth + pinion inside */
   var fr = igBg([-100,-100,200,200]);
   fr += _mvC(0,0,RA,c,c,0,0,0.07);
   fr += '<polygon points="'+ringPts+'" fill="'+bg+'" stroke="'+c+'" stroke-width="1.15" stroke-linejoin="round"/>';
@@ -21076,7 +21071,7 @@ function _mvInternalGear(m, zp, zr) {
   gpEl('mv-front-svg').setAttribute('viewBox','-100 -100 200 200');
   gpEl('mv-front-svg').innerHTML=fr;
 
-  /* BACK -- same, with keyway on hub */
+  /* BACK — same, with keyway on hub */
   var bk = igBg([-100,-100,200,200]);
   bk += _mvC(0,0,RA,c,c,0,0,0.07);
   bk += '<polygon points="'+ringPts+'" fill="'+bg+'" stroke="'+c+'" stroke-width="1.15" stroke-linejoin="round"/>';
@@ -21088,7 +21083,7 @@ function _mvInternalGear(m, zp, zr) {
   gpEl('mv-back-svg').setAttribute('viewBox','-100 -100 200 200');
   gpEl('mv-back-svg').innerHTML=bk;
 
-  /* SIDE VIEW -- wide flat rectangle (ring OD × face width),
+  /* SIDE VIEW — wide flat rectangle (ring OD × face width),
      inner dashed pitch rect, vertical tooth marks on rim */
   var hw = Math.min(BW/2, 52), hRA = Math.min(RA, 50);
   var sw = igBg([-100,-60,200,120]);
@@ -21108,7 +21103,7 @@ function _mvInternalGear(m, zp, zr) {
   gpEl('mv-side-svg').setAttribute('viewBox','-100 -60 200 120');
   gpEl('mv-side-svg').innerHTML=sw;
 
-  /* TOP VIEW -- same rectangular profile (gear looks same from top as side) */
+  /* TOP VIEW — same rectangular profile (gear looks same from top as side) */
   var tv = igBg([-100,-60,200,120]);
   var cTop='ig_tv_'+zr;
   tv += '<defs><clipPath id="'+cTop+'"><rect x="'+(-hw).toFixed(1)+'" y="'+(-hRA).toFixed(1)+'" width="'+(hw*2).toFixed(1)+'" height="'+(hRA*2).toFixed(1)+'"/></clipPath></defs>';
@@ -21124,7 +21119,7 @@ function _mvInternalGear(m, zp, zr) {
   gpEl('mv-top-svg').setAttribute('viewBox','-100 -60 200 120');
   gpEl('mv-top-svg').innerHTML=tv;
 
-  /* BOTTOM VIEW -- same as front face */
+  /* BOTTOM VIEW — same as front face */
   var bo = igBg([-100,-100,200,200]);
   bo += _mvC(0,0,RA,c,c,0,0,0.07);
   bo += '<polygon points="'+ringPts+'" fill="'+bg+'" stroke="'+c+'" stroke-width="1.15" stroke-linejoin="round"/>';
@@ -21137,7 +21132,7 @@ function _mvInternalGear(m, zp, zr) {
   gpEl('mv-bottom-svg').setAttribute('viewBox','-100 -100 200 200');
   gpEl('mv-bottom-svg').innerHTML=bo;
 
-  /* PERSPECTIVE -- isometric thick ring, internal teeth on front face, pinion inside */
+  /* PERSPECTIVE — isometric thick ring, internal teeth on front face, pinion inside */
   var pe = '<rect x="-120" y="-120" width="240" height="240" fill="'+bg+'" rx="5"/>';
   var sk=-0.30, BW2=Math.min(BW*0.48,26);
   /* Back face ring */
@@ -21166,7 +21161,7 @@ function _mvInternalGear(m, zp, zr) {
 }
 
 /* ═══════════════════════════════════════════════════════════════════
-   PLANETARY (EPICYCLIC) GEAR -- All 6 Engineering Views
+   PLANETARY (EPICYCLIC) GEAR — All 6 Engineering Views
    Reference: ring + sun + Np planets, carrier plates, shaft stubs
 ═══════════════════════════════════════════════════════════════════ */
 function _mvPlanetaryGear(m, zs, zp_val, np) {
@@ -21242,7 +21237,7 @@ function _mvPlanetaryGear(m, zs, zp_val, np) {
   gpEl('mv-front-svg').setAttribute('viewBox','-100 -100 200 200');
   gpEl('mv-front-svg').innerHTML=fr;
 
-  /* ── BACK -- same layout with keyway ── */
+  /* ── BACK — same layout with keyway ── */
   var bk = plBg([-100,-100,200,200]);
   bk += _mvC(0,0,RA,c1,c1,0,0,0.07);
   bk += '<polygon points="'+ringPts+'" fill="'+bg+'" stroke="'+c1+'" stroke-width="1.0" stroke-linejoin="round"/>';
@@ -21258,7 +21253,7 @@ function _mvPlanetaryGear(m, zs, zp_val, np) {
   gpEl('mv-back-svg').setAttribute('viewBox','-100 -100 200 200');
   gpEl('mv-back-svg').innerHTML=bk;
 
-  /* ── SIDE VIEW -- ring rect + carrier plate flanges ── */
+  /* ── SIDE VIEW — ring rect + carrier plate flanges ── */
   var hw=Math.min(BW/2,52), hRA=Math.min(RA,50);
   var cpH=Math.min(hRA*0.42,20), cpW=hw*0.28;
   var sw = plBg([-100,-60,200,120]);
@@ -21285,7 +21280,7 @@ function _mvPlanetaryGear(m, zs, zp_val, np) {
   gpEl('mv-side-svg').setAttribute('viewBox','-100 -60 200 120');
   gpEl('mv-side-svg').innerHTML=sw;
 
-  /* ── TOP VIEW -- same as side ── */
+  /* ── TOP VIEW — same as side ── */
   var tv = plBg([-100,-60,200,120]);
   var cTP='pl_tv_'+zr_val;
   tv += '<defs><clipPath id="'+cTP+'"><rect x="'+(-hw).toFixed(1)+'" y="'+(-hRA).toFixed(1)+'" width="'+(hw*2).toFixed(1)+'" height="'+(hRA*2).toFixed(1)+'"/></clipPath></defs>';
@@ -21304,7 +21299,7 @@ function _mvPlanetaryGear(m, zs, zp_val, np) {
   gpEl('mv-top-svg').setAttribute('viewBox','-100 -60 200 120');
   gpEl('mv-top-svg').innerHTML=tv;
 
-  /* ── BOTTOM VIEW -- same as front ── */
+  /* ── BOTTOM VIEW — same as front ── */
   var bo = plBg([-100,-100,200,200]);
   bo += _mvC(0,0,RA,c1,c1,0,0,0.07);
   bo += '<polygon points="'+ringPts+'" fill="'+bg+'" stroke="'+c1+'" stroke-width="1.0" stroke-linejoin="round"/>';
@@ -21322,7 +21317,7 @@ function _mvPlanetaryGear(m, zs, zp_val, np) {
   gpEl('mv-bottom-svg').setAttribute('viewBox','-100 -100 200 200');
   gpEl('mv-bottom-svg').innerHTML=bo;
 
-  /* ── PERSPECTIVE -- isometric ring + carrier + planets ── */
+  /* ── PERSPECTIVE — isometric ring + carrier + planets ── */
   var pe = '<rect x="-120" y="-120" width="240" height="240" fill="'+bg+'" rx="5"/>';
   var sk=-0.28, BW2=Math.min(BW*0.48,26);
   /* Back face ring circle */
@@ -21412,7 +21407,7 @@ function runCalcMeshAnalyzer() {
 
   function setMR(id, val, dec, cls) {
     var e = gpEl(id); if (!e) return;
-    e.textContent = isFinite(val) ? val.toFixed(dec||2) : '--';
+    e.textContent = isFinite(val) ? val.toFixed(dec||2) : '—';
     if (cls) e.className = 'mesh-result-value ' + cls;
   }
 
@@ -21468,12 +21463,12 @@ function _drawMeshVisSVG(svgId, z1, z2, m, pa) {
 <script>
 /* ══════════════════════════════════════════════
    SEQUENTIAL GLOW ANIMATION
-   -- Flow strip boxes (hero)
-   -- Step circles (how-it-works)
+   — Flow strip boxes (hero)
+   — Step circles (how-it-works)
 ══════════════════════════════════════════════ */
 (function() {
 
-  /* ── 1. FLOW STRIP -- boxes light up one by one ── */
+  /* ── 1. FLOW STRIP — boxes light up one by one ── */
   function initFlowStrip() {
     var strip = document.querySelector('.flow-strip');
     if (!strip) return;
@@ -21500,7 +21495,7 @@ function _drawMeshVisSVG(svgId, z1, z2, m, pa) {
     setInterval(tick, 900);
   }
 
-  /* ── 2. STEPS CIRCLES -- circles light up one by one ── */
+  /* ── 2. STEPS CIRCLES — circles light up one by one ── */
   function initStepCircles() {
     var grid = document.querySelector('.steps-grid');
     if (!grid) return;
@@ -21645,79 +21640,5 @@ function _drawMeshVisSVG(svgId, z1, z2, m, pa) {
 
   window.addEventListener("load", function() { window._loadPublishedTestimonials(); });
 </script>
-
-<!-- LEGAL MODALS -->
-<div id="legal-modal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;z-index:99999;background:rgba(0,0,0,0.6);backdrop-filter:blur(4px);overflow-y:auto;" onclick="if(event.target===this)closeLegalModal()">
-  <div style="max-width:800px;margin:3rem auto;background:var(--paper);border-radius:16px;border:1px solid var(--border);box-shadow:0 20px 60px rgba(0,0,0,0.3);overflow:hidden;">
-    <div style="display:flex;align-items:center;justify-content:space-between;padding:1.5rem 2rem;border-bottom:1px solid var(--border);background:var(--paper2);">
-      <div>
-        <div style="font-family:var(--font);font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--amber2);margin-bottom:4px;" id="legal-modal-eyebrow">LEGAL</div>
-        <h2 style="font-family:var(--font2);font-size:1.4rem;color:var(--ink);margin:0;" id="legal-modal-title">Policy</h2>
-      </div>
-      <button onclick="closeLegalModal()" style="background:none;border:none;cursor:pointer;color:var(--ink3);font-size:1.4rem;padding:8px;border-radius:8px;" onmouseover="this.style.background='var(--bg3)'" onmouseout="this.style.background='none'">X</button>
-    </div>
-    <div id="legal-modal-body" style="padding:2rem;color:var(--ink2);font-family:var(--font);font-size:0.9rem;line-height:1.8;"></div>
-    <div style="padding:1rem 2rem;border-top:1px solid var(--border);background:var(--paper2);text-align:right;">
-      <button onclick="closeLegalModal()" style="font-family:var(--font);font-size:0.65rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;padding:10px 24px;border-radius:8px;background:var(--amber2);border:none;color:#fff;cursor:pointer;">Close</button>
-    </div>
-  </div>
-</div>
-<script>
-var _privacyHTML = "<p style='color:var(--ink3);font-size:0.8rem;margin-bottom:1.5rem;'>Last updated: May 2026</p>"
-  + "<h3 style='font-family:var(--font2);font-size:1rem;color:var(--ink);margin:1.5rem 0 0.5rem;'>1. Overview</h3>"
-  + "<p>GearPedia is a browser-based engineering calculator. We are committed to protecting your privacy.</p>"
-  + "<h3 style='font-family:var(--font2);font-size:1rem;color:var(--ink);margin:1.5rem 0 0.5rem;'>2. Information We Collect</h3>"
-  + "<p><strong>Feedback:</strong> Name, email, message, rating - stored in Firebase Firestore.</p>"
-  + "<p><strong>Newsletter:</strong> Name, email, role - stored in Firebase Firestore.</p>"
-  + "<p><strong>Calculations:</strong> All run in your browser. Nothing sent to any server.</p>"
-  + "<p><strong>Analytics:</strong> Anonymous usage data via Firebase Analytics to improve the tool.</p>"
-  + "<h3 style='font-family:var(--font2);font-size:1rem;color:var(--ink);margin:1.5rem 0 0.5rem;'>3. How We Use Your Data</h3>"
-  + "<p>Data is used solely to respond to feedback, send updates (subscribers only), and improve GearPedia. We never sell or share your data.</p>"
-  + "<h3 style='font-family:var(--font2);font-size:1rem;color:var(--ink);margin:1.5rem 0 0.5rem;'>4. Data Storage</h3>"
-  + "<p>Stored using Google Firebase (Firestore), compliant with GDPR and applicable data protection laws.</p>"
-  + "<h3 style='font-family:var(--font2);font-size:1rem;color:var(--ink);margin:1.5rem 0 0.5rem;'>5. Cookies and Local Storage</h3>"
-  + "<p>GearPedia uses browser local storage for preferences (theme, units). No third-party tracking cookies.</p>"
-  + "<h3 style='font-family:var(--font2);font-size:1rem;color:var(--ink);margin:1.5rem 0 0.5rem;'>6. Your Rights</h3>"
-  + "<p>Request deletion of your data anytime via the feedback form. Removed within 30 days.</p>"
-  + "<h3 style='font-family:var(--font2);font-size:1rem;color:var(--ink);margin:1.5rem 0 0.5rem;'>7. Contact</h3>"
-  + "<p>For privacy queries, contact <strong>Shashank S. Jingade</strong> via the feedback form.</p>";
-
-var _disclaimerHTML = "<p style='color:var(--ink3);font-size:0.8rem;margin-bottom:1.5rem;'>Last updated: May 2026</p>"
-  + "<h3 style='font-family:var(--font2);font-size:1rem;color:var(--ink);margin:1.5rem 0 0.5rem;'>1. General Information Only</h3>"
-  + "<p>GearPedia is an educational tool for gear design calculations. Results are for informational and preliminary design purposes only.</p>"
-  + "<h3 style='font-family:var(--font2);font-size:1rem;color:var(--ink);margin:1.5rem 0 0.5rem;'>2. No Engineering Warranty</h3>"
-  + "<p>Calculations are based on standard formulas (ISO 6336, AGMA 6022, IS 9001, BS 721-2, DIN 3990). However, results must be independently verified by a qualified engineer before real-world use. GearPedia does not guarantee accuracy or fitness for any purpose.</p>"
-  + "<h3 style='font-family:var(--font2);font-size:1rem;color:var(--ink);margin:1.5rem 0 0.5rem;'>3. Limitation of Liability</h3>"
-  + "<p>GearPedia and its creator (Shashank S. Jingade) shall not be liable for any damages arising from use of this tool, including mechanical failures, financial losses, or personal injury.</p>"
-  + "<h3 style='font-family:var(--font2);font-size:1rem;color:var(--ink);margin:1.5rem 0 0.5rem;'>4. Professional Responsibility</h3>"
-  + "<p>It is the sole responsibility of the user to ensure designs are reviewed and approved by a licensed professional engineer before use in production or safety-critical applications.</p>"
-  + "<h3 style='font-family:var(--font2);font-size:1rem;color:var(--ink);margin:1.5rem 0 0.5rem;'>5. Standards References</h3>"
-  + "<p>References to ISO, AGMA, IS, BS, and DIN standards are for informational purposes only. GearPedia is not affiliated with any standards body.</p>"
-  + "<h3 style='font-family:var(--font2);font-size:1rem;color:var(--ink);margin:1.5rem 0 0.5rem;'>6. Changes</h3>"
-  + "<p>This disclaimer may be updated periodically. Continued use of GearPedia constitutes acceptance of the current disclaimer.</p>";
-
-function openLegalModal(type) {
-  var modal = document.getElementById("legal-modal");
-  if (type === "privacy") {
-    document.getElementById("legal-modal-eyebrow").textContent = "LEGAL - PRIVACY";
-    document.getElementById("legal-modal-title").textContent = "Privacy Policy";
-    document.getElementById("legal-modal-body").innerHTML = _privacyHTML;
-  } else {
-    document.getElementById("legal-modal-eyebrow").textContent = "LEGAL - DISCLAIMER";
-    document.getElementById("legal-modal-title").textContent = "Disclaimer";
-    document.getElementById("legal-modal-body").innerHTML = _disclaimerHTML;
-  }
-  modal.style.display = "block";
-  document.body.style.overflow = "hidden";
-}
-function closeLegalModal() {
-  document.getElementById("legal-modal").style.display = "none";
-  document.body.style.overflow = "";
-}
-document.addEventListener("keydown", function(e) {
-  if (e.key === "Escape") closeLegalModal();
-});
-</script>
-
 </body>
 </html>
